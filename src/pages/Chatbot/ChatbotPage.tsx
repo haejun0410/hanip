@@ -316,6 +316,7 @@ export default function ChatbotPage() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isSearching, setIsSearching] = useState(false)
+  const [quickOpen, setQuickOpen] = useState(true)
   const replies = quickReplies
 
   useHeaderConfig({ title: 'AI 도우미', showBack: true, showBell: true, badgeCount: 2 })
@@ -378,7 +379,7 @@ export default function ChatbotPage() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
       <div style={{ background: 'white', padding: '12px 16px', borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
         <div>
           <p style={{ fontSize: 13, fontWeight: 700 }}>{selectedCoach.name}</p>
@@ -387,7 +388,7 @@ export default function ChatbotPage() {
         <button onClick={() => navigate('/chatbot/init')} style={{ background: 'none', border: '1px solid var(--border)', borderRadius: 8, padding: '6px 12px', fontSize: 12, cursor: 'pointer', fontFamily: 'inherit', color: 'var(--text-secondary)' }}>변경</button>
       </div>
 
-      <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: 12, minHeight: 0 }}>
+      <div className="hide-scrollbar" style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: 12, minHeight: 0 }}>
         {messages.map((msg, i) => (
           <div key={i} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start', alignItems: 'flex-end', gap: 8 }}>
             {msg.role === 'ai' && (
@@ -416,17 +417,35 @@ export default function ChatbotPage() {
           </div>
         ))}
 
-        {messages.length === 1 && (
-          <div style={{ background: 'white', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-            <p style={{ padding: '12px 16px', fontSize: 13, fontWeight: 700, color: 'var(--text-secondary)', borderBottom: '1px solid var(--border)' }}>빠른 질문 선택</p>
-            {replies.map((reply, i) => (
-              <button key={reply} onClick={() => sendMessage(reply)} disabled={isSearching} style={{ width: '100%', padding: '13px 16px', background: 'white', border: 'none', borderBottom: i < replies.length - 1 ? '1px solid var(--border)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: isSearching ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 14, textAlign: 'left', color: 'var(--text-primary)', opacity: isSearching ? 0.6 : 1 }}>
-                <span>{reply}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </button>
-            ))}
-          </div>
-        )}
+      </div>
+
+      {/* ── 빠른 질문 패널 ── */}
+      <div style={{ background: 'white', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
+        <button
+          onClick={() => setQuickOpen(o => !o)}
+          style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
+        >
+          <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-secondary)' }}>빠른 질문</span>
+          <svg
+            width="16" height="16" viewBox="0 0 24 24" fill="none"
+            style={{ transition: 'transform 0.2s', transform: quickOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+          >
+            <path d="M6 9l6 6 6-6" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        <div style={{ overflow: 'hidden', maxHeight: quickOpen ? `${replies.length * 44}px` : '0px', transition: 'max-height 0.25s ease', borderTop: quickOpen ? '1px solid var(--border)' : 'none' }}>
+          {replies.map((reply, i) => (
+            <button
+              key={reply}
+              onClick={() => { sendMessage(reply); setQuickOpen(false) }}
+              disabled={isSearching}
+              style={{ width: '100%', padding: '11px 16px', background: 'white', border: 'none', borderBottom: i < replies.length - 1 ? '1px solid var(--border)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: isSearching ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, textAlign: 'left', color: 'var(--text-primary)', opacity: isSearching ? 0.6 : 1 }}
+            >
+              <span>{reply}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#D1D5DB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+          ))}
+        </div>
       </div>
 
       <div style={{ background: 'white', borderTop: '1px solid var(--border)', padding: '12px 16px', display: 'flex', gap: 10, alignItems: 'center', flexShrink: 0 }}>

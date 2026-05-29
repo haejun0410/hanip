@@ -70,6 +70,8 @@ html, body {
   min-height: 0;
 }
 .page-content::-webkit-scrollbar { display: none; }
+.hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
 
 .card {
   background: var(--bg-white);
