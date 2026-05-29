@@ -116,7 +116,7 @@ export default function MyPage() {
           </button>
         </div>
 
-        <div style={{ background: 'var(--primary)', borderRadius: 16, padding: '18px 20px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ background: 'var(--primary)', borderRadius: 20, padding: '18px 20px', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', right: -20, top: -20, width: 100, height: 100, background: 'rgba(255,255,255,0.06)', borderRadius: '50%' }} />
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, marginBottom: 4 }}>지금까지 받은 혜택</p>
           <p style={{ color: 'white', fontSize: 28, fontWeight: 700, marginBottom: 4 }}>{isHanbeoteam ? '2,400,000원' : isKimgodsaeng ? '950,000원' : '1,236,000원'}</p>
@@ -145,7 +145,7 @@ export default function MyPage() {
         <span style={{ fontSize: 15, fontWeight: 700, display: 'block', marginBottom: 14 }}>자주 쓰는 메뉴</span>
         <div style={{ display: 'flex', gap: 8 }}>
           {quickMenusData.map((m) => (
-            <button key={m.label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, background: 'var(--bg-gray)', border: 'none', borderRadius: 14, padding: '14px 8px', cursor: 'pointer', fontFamily: 'inherit' }}>
+            <button key={m.label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, background: 'var(--bg-gray)', border: 'none', borderRadius: 18, padding: '14px 8px', cursor: 'pointer', fontFamily: 'inherit' }}>
               {m.icon}
               <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-secondary)', textAlign: 'center' }}>{m.label}</span>
             </button>
@@ -164,7 +164,7 @@ export default function MyPage() {
             </div>
           ))}
         </div>
-        <div style={{ marginTop: 14, background: 'var(--bg-gray)', borderRadius: 12, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ marginTop: 14, background: 'var(--bg-gray)', borderRadius: 16, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
@@ -193,10 +193,10 @@ export default function MyPage() {
         <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
           <p style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-secondary)', marginBottom: 10 }}>시연용 페르소나 데이터</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-            <button onClick={() => login(HANBEOTEAM_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 12, background: userName === HANBEOTEAM_NAME ? 'var(--primary)' : 'var(--primary-light)', color: userName === HANBEOTEAM_NAME ? 'white' : 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+            <button onClick={() => login(HANBEOTEAM_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 16, background: userName === HANBEOTEAM_NAME ? 'var(--primary)' : 'var(--primary-light)', color: userName === HANBEOTEAM_NAME ? 'white' : 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
               한버팀
             </button>
-            <button onClick={() => login(KIMGODSAENG_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 12, background: userName === KIMGODSAENG_NAME ? 'var(--primary)' : 'white', color: userName === KIMGODSAENG_NAME ? 'white' : 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+            <button onClick={() => login(KIMGODSAENG_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 16, background: userName === KIMGODSAENG_NAME ? 'var(--primary)' : 'white', color: userName === KIMGODSAENG_NAME ? 'white' : 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
               김갓생
             </button>
           </div>

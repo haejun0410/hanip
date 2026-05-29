@@ -69,8 +69,8 @@ export default function PolicyPage() {
         </div>
         <div className="scroll-x" style={{ display: 'flex', gap: 12 }}>
           {featuredPolicies.map((p) => (
-            <div key={p.id} onClick={() => navigate(`/policy/${p.id}`)} style={{ background: 'white', borderRadius: 16, padding: '16px', minWidth: 160, maxWidth: 180, cursor: 'pointer', boxShadow: 'var(--shadow-sm)', flexShrink: 0 }}>
-              <div style={{ width: 48, height: 48, background: 'var(--primary-light)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, marginBottom: 10 }}>{p.emoji}</div>
+            <div key={p.id} onClick={() => navigate(`/policy/${p.id}`)} style={{ background: 'white', borderRadius: 20, padding: '16px', minWidth: 160, maxWidth: 180, cursor: 'pointer', boxShadow: 'var(--shadow-sm)', flexShrink: 0 }}>
+              <div style={{ width: 48, height: 48, background: 'var(--primary-light)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, marginBottom: 10 }}>{p.emoji}</div>
               <span className={`badge ${p.tagColor}`} style={{ marginBottom: 6, display: 'inline-block' }}>{p.tag}</span>
               <p style={{ fontSize: 13, fontWeight: 700, lineHeight: 1.4, marginBottom: 8 }}>{p.title}</p>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -91,9 +91,9 @@ export default function PolicyPage() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {policies.map((p) => (
-            <div key={p.id} onClick={() => navigate(`/policy/${p.id}`)} style={{ background: 'white', borderRadius: 14, padding: '14px 16px', boxShadow: 'var(--shadow-sm)', cursor: 'pointer' }}>
+            <div key={p.id} onClick={() => navigate(`/policy/${p.id}`)} style={{ background: 'white', borderRadius: 18, padding: '14px 16px', boxShadow: 'var(--shadow-sm)', cursor: 'pointer' }}>
               <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                <div style={{ width: 48, height: 48, background: 'var(--primary-light)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, flexShrink: 0 }}>{p.emoji}</div>
+                <div style={{ width: 48, height: 48, background: 'var(--primary-light)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, flexShrink: 0 }}>{p.emoji}</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
                     <span className={`badge ${p.tagColor}`}>{p.tag}</span>

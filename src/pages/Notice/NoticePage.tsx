@@ -60,9 +60,9 @@ export default function NoticePage() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {notices.benefit.map((item, i) => (
-                <div key={i} style={{ background: 'white', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+                <div key={i} style={{ background: 'white', borderRadius: 20, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
                   <div style={{ background: item.bg, padding: '20px 16px', display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <div style={{ width: 52, height: 52, background: 'white', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>{item.emoji}</div>
+                    <div style={{ width: 52, height: 52, background: 'white', borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>{item.emoji}</div>
                     <div style={{ flex: 1 }}>
                       <p style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{item.title}</p>
                       <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.4 }}>{item.desc}</p>
@@ -87,8 +87,8 @@ export default function NoticePage() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {notices.status.map((item, i) => (
-                <div key={i} style={{ background: 'white', borderRadius: 14, padding: '14px 16px', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{ width: 44, height: 44, background: 'var(--bg-gray)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>{item.emoji}</div>
+                <div key={i} style={{ background: 'white', borderRadius: 18, padding: '14px 16px', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{ width: 44, height: 44, background: 'var(--bg-gray)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>{item.emoji}</div>
                   <div style={{ flex: 1 }}>
                     <p style={{ fontSize: 14, fontWeight: 600, marginBottom: 2 }}>{item.desc}</p>
                     <p style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>{item.date}</p>
@@ -120,8 +120,8 @@ export default function NoticePage() {
           </div>
         )}
 
-        <div style={{ margin: '0 16px 16px', background: 'var(--primary)', borderRadius: 16, padding: '20px', display: 'flex', alignItems: 'center', gap: 14 }}>
-          <div style={{ width: 52, height: 52, background: 'rgba(255,255,255,0.2)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>🤖</div>
+        <div style={{ margin: '0 16px 16px', background: 'var(--primary)', borderRadius: 20, padding: '20px', display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div style={{ width: 52, height: 52, background: 'rgba(255,255,255,0.2)', borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>🤖</div>
           <div style={{ flex: 1 }}>
             <p style={{ fontSize: 14, fontWeight: 700, color: 'white', marginBottom: 4 }}>더 궁금한 내용이 있으신가요?</p>
             <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)' }}>AI 봇에게 물어보세요!</p>

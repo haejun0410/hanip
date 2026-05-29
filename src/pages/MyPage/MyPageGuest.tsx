@@ -36,7 +36,7 @@ export default function MyPageGuest() {
         </div>
 
         {/* 혜택 미리보기 */}
-        <div style={{ background: 'var(--primary-light)', borderRadius: 16, padding: '18px 20px', marginBottom: 20 }}>
+        <div style={{ background: 'var(--primary-light)', borderRadius: 20, padding: '18px 20px', marginBottom: 20 }}>
           <p style={{ fontSize: 13, color: 'var(--primary)', fontWeight: 600, marginBottom: 8 }}>로그인하면 이런 게 보여요</p>
           <div style={{ display: 'flex', gap: 12 }}>
             {[{ icon: '💰', label: '절세 혜택', value: '??만원' }, { icon: '🏛️', label: '지원금', value: '??만원' }, { icon: '📋', label: '신청 현황', value: '?건' }].map((item, i) => (
@@ -71,10 +71,10 @@ export default function MyPageGuest() {
         <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
           <p style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-secondary)', marginBottom: 10 }}>시연용 페르소나 데이터</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-            <button onClick={() => handlePersonaLogin(HANBEOTEAM_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 12, background: 'var(--primary-light)', color: 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+            <button onClick={() => handlePersonaLogin(HANBEOTEAM_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 16, background: 'var(--primary-light)', color: 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
               한버팀
             </button>
-            <button onClick={() => handlePersonaLogin(KIMGODSAENG_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 12, background: 'white', color: 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+            <button onClick={() => handlePersonaLogin(KIMGODSAENG_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 16, background: 'white', color: 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
               김갓생
             </button>
           </div>

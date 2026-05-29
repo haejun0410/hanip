@@ -202,7 +202,7 @@ export default function HomePage() {
                 <div
                   key={ev.id}
                   onClick={() => navigate(ev.route)}
-                  style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: 'var(--bg-gray)', borderRadius: 12, cursor: 'pointer' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: 'var(--bg-gray)', borderRadius: 16, cursor: 'pointer' }}
                 >
                   <div style={{ width: 40, height: 40, background: ev.type === 'policy' ? '#EBF1FF' : '#FEF3C7', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>
                     {ev.emoji}

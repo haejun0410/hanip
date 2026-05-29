@@ -314,7 +314,7 @@ export default function RecommendDetailPage() {
         <GaugeMeter current={item.currentAmount} max={item.maxAmount} />
 
         {/* 경고 배너 */}
-        <div style={{ background: '#F0F5FF', borderRadius: 12, padding: '13px 14px', marginTop: 16, display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+        <div style={{ background: '#F0F5FF', borderRadius: 16, padding: '13px 14px', marginTop: 16, display: 'flex', alignItems: 'flex-start', gap: 10 }}>
           <div style={{ width: 26, height: 26, borderRadius: '50%', background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <circle cx="12" cy="12" r="10" fill="#3B6FE8" opacity="0.15"/>
@@ -338,7 +338,7 @@ export default function RecommendDetailPage() {
             <div key={i} style={{
               flex: 1,
               background: '#F8FAFF',
-              borderRadius: 14,
+              borderRadius: 18,
               padding: '14px 8px',
               textAlign: 'center',
               border: '1px solid #EBF1FF',

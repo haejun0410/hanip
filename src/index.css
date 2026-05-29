@@ -22,9 +22,9 @@
   --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
   --shadow-md: 0 2px 12px rgba(0,0,0,0.08);
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
 
   --bottom-nav-height: calc(64px + env(safe-area-inset-bottom, 0px));
@@ -171,7 +171,7 @@ html, body {
   margin: 8px 16px 12px;
   padding: 16px 16px 17px;
   border: 1px solid #D9E6FF;
-  border-radius: 20px;
+  border-radius: 24px;
   background: #F7FBFF;
   box-shadow: 0 6px 18px rgba(59,111,232,0.04);
 }
@@ -242,7 +242,7 @@ html, body {
   margin-bottom: 12px;
   padding: 13px 14px;
   border: 1px solid #D9E6FF;
-  border-radius: 16px;
+  border-radius: 20px;
   background: white;
 }
 
@@ -291,7 +291,7 @@ html, body {
   height: 49px;
   padding: 9px 10px;
   border: 1px solid #E2E8F0;
-  border-radius: 12px;
+  border-radius: 16px;
   background: white;
   cursor: pointer;
   font-family: inherit;
@@ -329,7 +329,7 @@ html, body {
   min-height: 128px;
   padding: 14px 16px;
   border: 1px solid #D9E6FF;
-  border-radius: 18px;
+  border-radius: 22px;
   background: white;
   box-shadow: 0 6px 18px rgba(59,111,232,0.04);
 }

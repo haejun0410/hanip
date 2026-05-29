@@ -36,7 +36,7 @@ export default function RecommendPage() {
             onClick={() => navigate(`/recommend/${item.id}`)}
             style={{
               background: 'white',
-              borderRadius: 16,
+              borderRadius: 20,
               padding: '16px 14px 14px',
               boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
               cursor: 'pointer',
@@ -46,7 +46,7 @@ export default function RecommendPage() {
             <div style={{
               width: 52, height: 52,
               background: item.iconBg,
-              borderRadius: 14,
+              borderRadius: 18,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 28,
               marginBottom: 12,
@@ -75,7 +75,7 @@ export default function RecommendPage() {
       <div style={{
         margin: '0 16px 24px',
         background: 'var(--primary)',
-        borderRadius: 16,
+        borderRadius: 20,
         padding: '20px',
         display: 'flex',
         alignItems: 'center',

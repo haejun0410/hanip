@@ -25,8 +25,8 @@ export default function RecommendGuestPage() {
       {/* 샘플 카드 2개 - 정상 표시 */}
       <div style={{ padding: '8px 16px 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         {sampleItems.slice(0, 2).map(item => (
-          <div key={item.id} style={{ background: 'white', borderRadius: 16, padding: '16px 14px 14px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', position: 'relative' }}>
-            <div style={{ width: 52, height: 52, background: item.iconBg, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, marginBottom: 12 }}>{item.emoji}</div>
+          <div key={item.id} style={{ background: 'white', borderRadius: 20, padding: '16px 14px 14px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', position: 'relative' }}>
+            <div style={{ width: 52, height: 52, background: item.iconBg, borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, marginBottom: 12 }}>{item.emoji}</div>
             <p style={{ fontSize: 13, fontWeight: 700, marginBottom: 4, lineHeight: 1.35, paddingRight: 16 }}>{item.label}</p>
             <p style={{ fontSize: 20, fontWeight: 800, color: 'var(--primary)', marginBottom: 6 }}>{item.amount}</p>
             <p style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>{item.tag}</p>
@@ -41,8 +41,8 @@ export default function RecommendGuestPage() {
       <div style={{ position: 'relative', margin: '12px 16px 0' }}>
         <div style={{ filter: 'blur(3px)', pointerEvents: 'none', opacity: 0.5, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           {sampleItems.slice(2).map(item => (
-            <div key={item.id} style={{ background: 'white', borderRadius: 16, padding: '16px 14px 14px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-              <div style={{ width: 52, height: 52, background: item.iconBg, borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, marginBottom: 12 }}>{item.emoji}</div>
+            <div key={item.id} style={{ background: 'white', borderRadius: 20, padding: '16px 14px 14px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+              <div style={{ width: 52, height: 52, background: item.iconBg, borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, marginBottom: 12 }}>{item.emoji}</div>
               <p style={{ fontSize: 13, fontWeight: 700, marginBottom: 4, lineHeight: 1.35 }}>{item.label}</p>
               <p style={{ fontSize: 20, fontWeight: 800, color: 'var(--primary)', marginBottom: 6 }}>{item.amount}</p>
               <p style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>{item.tag}</p>

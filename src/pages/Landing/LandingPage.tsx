@@ -72,7 +72,7 @@ export default function LandingPage() {
         <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, marginBottom: 32 }}>
           내 소득과 지출을 분석해<br />받을 수 있는 혜택을 한눈에 보여드려요
         </p>
-        <button onClick={goLogin} style={{ background: 'white', color: 'var(--primary)', border: 'none', borderRadius: 12, padding: '15px 32px', fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+        <button onClick={goLogin} style={{ background: 'white', color: 'var(--primary)', border: 'none', borderRadius: 16, padding: '15px 32px', fontSize: 15, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
           무료로 시작하기
         </button>
         <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, marginTop: 10 }}>공인인증서 없이 · 3분 완성</p>
@@ -91,8 +91,8 @@ export default function LandingPage() {
         <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 20 }}>복잡한 세금과 복지, 한 번에 정리해드려요</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           {features.map((f) => (
-            <button key={f.title} onClick={goLogin} style={{ background: 'white', border: '1px solid var(--border)', borderRadius: 16, padding: '18px 14px', textAlign: 'left', cursor: 'pointer', fontFamily: 'inherit' }}>
-              <div style={{ width: 44, height: 44, background: f.color, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
+            <button key={f.title} onClick={goLogin} style={{ background: 'white', border: '1px solid var(--border)', borderRadius: 20, padding: '18px 14px', textAlign: 'left', cursor: 'pointer', fontFamily: 'inherit' }}>
+              <div style={{ width: 44, height: 44, background: f.color, borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
                 {f.icon}
               </div>
               <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6 }}>{f.title}</p>
@@ -103,8 +103,8 @@ export default function LandingPage() {
       </div>
 
       {/* Preview banner */}
-      <div style={{ margin: '0 20px 24px', background: 'var(--primary-light)', borderRadius: 16, padding: '20px', display: 'flex', gap: 16, alignItems: 'center' }}>
-        <div style={{ width: 44, height: 44, background: 'var(--primary)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+      <div style={{ margin: '0 20px 24px', background: 'var(--primary-light)', borderRadius: 20, padding: '20px', display: 'flex', gap: 16, alignItems: 'center' }}>
+        <div style={{ width: 44, height: 44, background: 'var(--primary)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
           </svg>
@@ -141,7 +141,7 @@ export default function LandingPage() {
             },
           ].map((item) => (
             <div key={item.step} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-              <div style={{ width: 40, height: 40, background: 'var(--primary)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 40, height: 40, background: 'var(--primary)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 {item.icon}
               </div>
               <div style={{ flex: 1, paddingTop: 2 }}>
@@ -158,7 +158,7 @@ export default function LandingPage() {
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16 }}>사용자 후기</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {reviews.map((r, i) => (
-            <div key={i} style={{ background: 'white', borderRadius: 14, padding: '16px' }}>
+            <div key={i} style={{ background: 'white', borderRadius: 18, padding: '16px' }}>
               <p style={{ fontSize: 13, color: 'var(--text-primary)', lineHeight: 1.7, marginBottom: 10 }}>"{r.text}"</p>
               <p style={{ fontSize: 12, color: 'var(--text-tertiary)', fontWeight: 600 }}>— {r.name}</p>
             </div>

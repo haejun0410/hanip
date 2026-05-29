@@ -270,7 +270,7 @@ function AuthModal({ provider, onComplete, onClose }: AuthModalProps) {
 
               {/* 앱 아이콘 + 서비스명 */}
               <div style={{ padding: '24px 20px 16px', textAlign: 'center', borderBottom: '1px solid #EBEBEB' }}>
-                <div style={{ width: 60, height: 60, borderRadius: 14, background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 30, margin: '0 auto 10px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }}>🤖</div>
+                <div style={{ width: 60, height: 60, borderRadius: 18, background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 30, margin: '0 auto 10px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }}>🤖</div>
                 <p style={{ fontSize: 15, fontWeight: 700, color: '#111', marginBottom: 2 }}>한입(HanIP)</p>
                 <p style={{ fontSize: 11, color: '#888' }}>hanip.app</p>
               </div>
@@ -510,7 +510,7 @@ function AuthModal({ provider, onComplete, onClose }: AuthModalProps) {
                   { name: 'LG U+', color: '#E11E8E', bg: '#FFF0F8', sub: 'LG유플러스' },
                 ].map(c => (
                   <button key={c.name} onClick={() => { setCarrier(c.name); setSubStep(2) }}
-                    style={{ padding: '16px 18px', background: c.bg, border: `1.5px solid ${carrier === c.name ? c.color : 'transparent'}`, borderRadius: 14, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    style={{ padding: '16px 18px', background: c.bg, border: `1.5px solid ${carrier === c.name ? c.color : 'transparent'}`, borderRadius: 18, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div>
                       <p style={{ fontSize: 15, fontWeight: 700, color: c.color }}>{c.name}</p>
                       <p style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>{c.sub}</p>
@@ -570,7 +570,7 @@ function AuthModal({ provider, onComplete, onClose }: AuthModalProps) {
               <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{phone}으로 인증 요청을 보냈어요</p>
             </div>
 
-            <div style={{ border: '1px solid #E5E7EB', borderRadius: 14, overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+            <div style={{ border: '1px solid #E5E7EB', borderRadius: 18, overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
               <div style={{ background: '#F9F9F9', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid #E5E7EB' }}>
                 <div style={{ width: 28, height: 28, borderRadius: 8, background: '#2448A5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <span style={{ color: 'white', fontSize: 11, fontWeight: 800 }}>P</span>
@@ -625,7 +625,7 @@ function AuthModal({ provider, onComplete, onClose }: AuthModalProps) {
 function OAuthSuccess() {
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 24px', gap: 12 }}>
-      <div style={{ width: 64, height: 64, borderRadius: 16, background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 4, fontSize: 32 }}>🤖</div>
+      <div style={{ width: 64, height: 64, borderRadius: 20, background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 4, fontSize: 32 }}>🤖</div>
       <p style={{ fontSize: 16, fontWeight: 700, color: '#111', textAlign: 'center' }}>한입(HanIP)으로<br />돌아가는 중…</p>
       <p style={{ fontSize: 13, color: '#888', textAlign: 'center' }}>잠시만 기다려주세요</p>
       <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
@@ -758,7 +758,7 @@ function ModalShell({ children, onClose, headerBg, headerColor, logo, title, hid
         <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 0' }}>
           <div style={{ width: 36, height: 4, borderRadius: 2, background: '#D1D5DB' }} />
         </div>
-        <div style={{ background: headerBg, padding: '14px 20px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '10px 16px 0', borderRadius: 14 }}>
+        <div style={{ background: headerBg, padding: '14px 20px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '10px 16px 0', borderRadius: 18 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(0,0,0,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ color: headerColor, fontSize: 12, fontWeight: 900, letterSpacing: -0.5 }}>{logo}</span>
@@ -838,7 +838,7 @@ export default function LoginFlow() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%', maxWidth: 300 }}>
           {['소득·공제 정보 분석 중…', '건강보험·의료비 확인 중…', '맞춤 지원금 탐색 중…'].map((text, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 16px', background: 'var(--bg-gray)', borderRadius: 12 }}>
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 16px', background: 'var(--bg-gray)', borderRadius: 16 }}>
               <div style={{ width: 8, height: 8, borderRadius: '50%', background: i === 0 ? 'var(--primary)' : 'var(--border)', flexShrink: 0, animation: i === 0 ? 'pulse 1s infinite' : 'none' }} />
               <span style={{ fontSize: 14, color: i === 0 ? 'var(--primary)' : 'var(--text-tertiary)', fontWeight: i === 0 ? 600 : 400 }}>{text}</span>
             </div>
@@ -867,7 +867,7 @@ export default function LoginFlow() {
           </div>
 
           {/* 예상 혜택 요약 */}
-          <div style={{ border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden', marginBottom: 16 }}>
+          <div style={{ border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden', marginBottom: 16 }}>
             <div style={{ background: 'var(--primary)', padding: '16px 20px' }}>
               <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 12, marginBottom: 4 }}>예상 환급 · 절세 금액</p>
               <p style={{ color: 'white', fontSize: 32, fontWeight: 700 }}>128만원</p>
@@ -887,7 +887,7 @@ export default function LoginFlow() {
           </div>
 
           {/* 연결된 기관 */}
-          <div style={{ background: 'var(--bg-gray)', borderRadius: 14, padding: '14px 16px' }}>
+          <div style={{ background: 'var(--bg-gray)', borderRadius: 18, padding: '14px 16px' }}>
             <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 10 }}>연결된 마이데이터 기관</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {mydataOrgs.filter(o => connectedOrgs.includes(o.id)).map(o => (
@@ -946,7 +946,7 @@ export default function LoginFlow() {
                 />
               </div>
 
-              <div style={{ background: 'var(--primary-light)', borderRadius: 16, padding: '20px', textAlign: 'center', marginBottom: 28 }}>
+              <div style={{ background: 'var(--primary-light)', borderRadius: 20, padding: '20px', textAlign: 'center', marginBottom: 28 }}>
                 <div style={{ fontSize: 52, marginBottom: 10 }}>🔐</div>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                   공인인증서 없이도 간편하게<br />본인 인증을 완료할 수 있어요
@@ -966,7 +966,7 @@ export default function LoginFlow() {
                 ].map(btn => (
                   <button key={btn.label}
                     onClick={() => { if (!inputName.trim()) return; setActiveProvider(btn.provider) }}
-                    style={{ width: '100%', height: 52, background: btn.bg, color: btn.color, border: authMethod === btn.label ? '2px solid #1A1A2E' : '2px solid transparent', borderRadius: 12, fontSize: 15, fontWeight: 600, fontFamily: 'inherit', cursor: inputName.trim() ? 'pointer' : 'default', opacity: inputName.trim() ? 1 : 0.45, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'opacity 0.15s' }}>
+                    style={{ width: '100%', height: 52, background: btn.bg, color: btn.color, border: authMethod === btn.label ? '2px solid #1A1A2E' : '2px solid transparent', borderRadius: 16, fontSize: 15, fontWeight: 600, fontFamily: 'inherit', cursor: inputName.trim() ? 'pointer' : 'default', opacity: inputName.trim() ? 1 : 0.45, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'opacity 0.15s' }}>
                     <span>{btn.icon}</span>{btn.label}
                   </button>
                 ))}
@@ -995,7 +995,7 @@ export default function LoginFlow() {
                             : [...prev.filter(f => f !== '없음(1인)'), opt.label]
                         )
                       }}
-                      style={{ padding: '14px 8px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 14, cursor: 'pointer', textAlign: 'center', fontFamily: 'inherit', transition: 'all 0.15s' }}>
+                      style={{ padding: '14px 8px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 18, cursor: 'pointer', textAlign: 'center', fontFamily: 'inherit', transition: 'all 0.15s' }}>
                       <div style={{ fontSize: 30, marginBottom: 6 }}>{opt.icon}</div>
                       <div style={{ fontSize: 13, fontWeight: 700, color: selected ? 'var(--primary)' : 'var(--text-primary)', marginBottom: 2 }}>{opt.label}</div>
                       <div style={{ fontSize: 10, color: 'var(--text-tertiary)', lineHeight: 1.3 }}>{opt.sub}</div>
@@ -1004,7 +1004,7 @@ export default function LoginFlow() {
                 })}
               </div>
 
-              <div style={{ padding: '14px 16px', background: 'var(--bg-gray)', borderRadius: 12 }}>
+              <div style={{ padding: '14px 16px', background: 'var(--bg-gray)', borderRadius: 16 }}>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
                   선택: <strong style={{ color: 'var(--text-primary)' }}>
                     {selectedFamily.length === 0 ? '아직 선택하지 않음' : selectedFamily.join(', ')}
@@ -1034,7 +1034,7 @@ export default function LoginFlow() {
                   return (
                     <button key={range.label}
                       onClick={() => setIncomeRange(range.label)}
-                      style={{ padding: '16px 18px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 14, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'space-between', transition: 'all 0.15s' }}>
+                      style={{ padding: '16px 18px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 18, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'space-between', transition: 'all 0.15s' }}>
                       <div>
                         <p style={{ fontSize: 15, fontWeight: 600, color: selected ? 'var(--primary)' : 'var(--text-primary)', marginBottom: 2 }}>{range.label}</p>
                         <p style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>{range.sub}</p>
@@ -1047,7 +1047,7 @@ export default function LoginFlow() {
                 })}
               </div>
 
-              <div style={{ background: '#FFF8E1', borderRadius: 12, padding: '12px 14px', display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+              <div style={{ background: '#FFF8E1', borderRadius: 16, padding: '12px 14px', display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                 <span>⚠️</span>
                 <p style={{ fontSize: 12, color: '#92400E', lineHeight: 1.5 }}>소득 정보는 공제 계산에만 사용되며, 마이데이터 연결 시 자동으로 가져올 수 있어요</p>
               </div>
@@ -1066,7 +1066,7 @@ export default function LoginFlow() {
                   const selected = hasStock === opt.value
                   return (
                     <button key={String(opt.value)} onClick={() => setHasStock(opt.value)}
-                      style={{ padding: '18px 20px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 16, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      style={{ padding: '18px 20px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 20, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <div>
                         <p style={{ fontSize: 15, fontWeight: 600, color: selected ? 'var(--primary)' : 'var(--text-primary)', marginBottom: 2 }}>{opt.label}</p>
                         <p style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>{opt.sub}</p>
@@ -1110,8 +1110,8 @@ export default function LoginFlow() {
                   const connected = connectedOrgs.includes(org.id)
                   return (
                     <button key={org.id} onClick={() => toggleOrg(org.id)}
-                      style={{ padding: '14px 16px', background: connected ? 'var(--primary-light)' : 'white', border: connected ? '1.5px solid var(--primary)' : '1.5px solid var(--border)', borderRadius: 14, cursor: org.required ? 'default' : 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 14, transition: 'all 0.15s' }}>
-                      <div style={{ width: 44, height: 44, background: connected ? 'white' : 'var(--bg-gray)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0, boxShadow: connected ? 'var(--shadow-sm)' : 'none' }}>
+                      style={{ padding: '14px 16px', background: connected ? 'var(--primary-light)' : 'white', border: connected ? '1.5px solid var(--primary)' : '1.5px solid var(--border)', borderRadius: 18, cursor: org.required ? 'default' : 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 14, transition: 'all 0.15s' }}>
+                      <div style={{ width: 44, height: 44, background: connected ? 'white' : 'var(--bg-gray)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0, boxShadow: connected ? 'var(--shadow-sm)' : 'none' }}>
                         {org.icon}
                       </div>
                       <div style={{ flex: 1 }}>
@@ -1129,7 +1129,7 @@ export default function LoginFlow() {
                 })}
               </div>
 
-              <div style={{ background: 'var(--bg-gray)', borderRadius: 12, padding: '14px 16px' }}>
+              <div style={{ background: 'var(--bg-gray)', borderRadius: 16, padding: '14px 16px' }}>
                 <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                   📌 연결된 기관: <strong style={{ color: 'var(--text-primary)' }}>{connectedOrgs.length}개</strong><br />
                   수집된 정보는 혜택 분석에만 활용되며, 제3자에게 제공되지 않아요

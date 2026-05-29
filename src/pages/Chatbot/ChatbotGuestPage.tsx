@@ -69,7 +69,7 @@ export default function ChatbotGuestPage() {
 
         {/* 빠른 질문 (첫 화면) */}
         {userCount === 0 && (
-          <div style={{ background: 'white', borderRadius: 16, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+          <div style={{ background: 'white', borderRadius: 20, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
             <p style={{ padding: '12px 16px', fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '1px solid var(--border)' }}>💡 이런 것들을 물어볼 수 있어요</p>
             {sampleReplies.map((reply, i) => (
               <button key={i} onClick={() => sendMessage(reply)} style={{ width: '100%', padding: '13px 16px', background: 'white', border: 'none', borderBottom: i < sampleReplies.length - 1 ? '1px solid var(--border)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, textAlign: 'left', color: 'var(--text-primary)' }}>
