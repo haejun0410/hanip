@@ -1,0 +1,44 @@
+{
+  "sessions": {
+    "019e7137-8b35-79f0-a1a1-c5cfa6a06b9c": {
+      "ordinary_no_progress_guard": {
+        "fingerprint": "ordinary|�?명령?� ?�재 ?�션 ?�에??직접 ?�환???�는 ?�습?�다. ???��??�에???�행?�려�??�로?�트 ?�더?�서: ```powershell codex -a never -s workspace-write ``` ?��????�음�?같습?�다: - `-a never`: 명령 ?�인 ?�청 ?�이 ?�행?��? ?�음 - `-s workspace-write`: ?�재 ?�크?�페?�스 ?�기 ?�용 ?�드박스 ?�재 ?�션?� ?��? `workspace-write`�??�작 중이�? powershell sandbox spawn 문제가 ?�어???�요???�기/빌드 명령?� ?�인 기반 escalation?�로 처리?�고 ?�습?�다.",
+        "first_seen_at": "2026-05-29T01:05:17.781Z",
+        "last_seen_at": "2026-05-29T01:05:17.781Z",
+        "repeat_count": 1,
+        "last_turn_id": "019e7143-7878-7b73-962e-665eefa353b5",
+        "last_thread_id": null
+      }
+    },
+    "019e7143-b946-73e0-81c1-b6c677f57587": {
+      "ordinary_no_progress_guard": {
+        "fingerprint": "ordinary|로컬 ?�이 ?�재 `windows sandbox: spawn setup refresh` ?�류�??�행?��? ?�아 ?�일 검???�정??진행?????�습?�다. ?��?mcp 리소?�도 비어 ?�어??코드 ?�치�??�인??경로가 ?�습?�다. ?�정??컴포?�트 ?�일 경로�??�려주시�? ???�이 `apply_patch`�?바로 구분???�거 ?�치�??�겠?�니??",
+        "first_seen_at": "2026-05-29T01:06:27.115Z",
+        "last_seen_at": "2026-05-29T01:06:27.115Z",
+        "repeat_count": 1,
+        "last_turn_id": "019e7144-4a40-7bb2-967e-4d00c1c2fb03",
+        "last_thread_id": null
+      }
+    },
+    "019e7145-d005-7cb2-a0be-797c6aa1cc30": {
+      "ordinary_no_progress_guard": {
+        "fingerprint": "ordinary|{\"title\":\"구분???�거\"}",
+        "first_seen_at": "2026-05-29T01:07:47.136Z",
+        "last_seen_at": "2026-05-29T01:07:47.136Z",
+        "repeat_count": 1,
+        "last_turn_id": "019e7145-d03d-7391-8283-7335f3866142",
+        "last_thread_id": null
+      }
+    },
+    "019e7145-a229-71d3-bf40-fc72c2c6f502": {
+      "ordinary_no_progress_guard": {
+        "fingerprint": "ordinary|바꿨?�요. ?�제 빠른 질문?� 모든 ?�용?�에�?공통 질문�??�옵?�다. 공통 빠른 질문: - 지�??�청 가?�한 ?�택???�어? - ?��? 받을 ???�는 ?�책???�려�?n- 종합?�득???�고 기간???�제?? - ?�득공제?� ?�액공제 차이가 뭐야? - 교육�?공제???�떻�?받아? ?�???�력창에 �??�르?�나 질문??직접 치면, ?�확??같�? 문장???�니?�도 ?�워?�로 매칭?�서 준비된 rag ?��???보여줍니?? ?��? ?�면: - `?��?모랑 부?�??공제 같이 ??` - `?�마 ?�로 ?�는???�적공제 가??` - `근로?�려�?조건 ?�려�? - `?�말?�산 ?�해???�도 ?�어?` - `체크카드 ?�용카드 뭐�? 좋아?` - `?�경 ?�수�?버렸?�데 공제 ??` ?�런 ?�으�??�력?�도 검???�로?�스 ???��?�?참고 문서가 같이 ?�옵?�다. 검�? `npm.cmd run build` ?�공?�습?�다.",
+        "first_seen_at": "2026-05-29T02:41:44.315Z",
+        "last_seen_at": "2026-05-29T02:41:44.315Z",
+        "repeat_count": 1,
+        "last_turn_id": "019e719a-ebcc-7213-a7b3-a4e0d459393f",
+        "last_thread_id": null
+      }
+    }
+  }
+}
