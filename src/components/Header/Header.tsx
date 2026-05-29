@@ -34,7 +34,10 @@ export default function Header() {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
         {showLogo && !title
-          ? <img src="/logo.png" alt="한입" style={{ height: 28, objectFit: 'contain' }} />
+          ? <>
+              <img src="/logo.png" alt="" aria-hidden="true" style={{ height: 28, objectFit: 'contain' }} />
+              <span style={{ fontSize: 18, fontWeight: 800, color: 'var(--primary)', letterSpacing: '-0.3px' }}>한입</span>
+            </>
           : title && (
             <>
               <img src="/logo.png" alt="" aria-hidden="true" style={{ height: 20, objectFit: 'contain', opacity: 0.9 }} />

@@ -36,7 +36,7 @@ export default function PolicyPage() {
     : userName === KIMGODSAENG_NAME
     ? kimgodsaengPolicyList.slice(0, 3)
     : featured
-  useHeaderConfig({ showLogo: true, showBell: true, badgeCount: 2 })
+  useHeaderConfig({ title: '정책', showBell: true, badgeCount: 2 })
 
   return (
     <div>
