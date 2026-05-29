@@ -782,112 +782,13 @@ function ModalShell({ children, onClose, headerBg, headerColor, logo, title, hid
   return appFrame ? createPortal(content, appFrame) : content
 }
 
-// ── 컨페티 애니메이션 ─────────────────────────────────────
-function Confetti() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const W = canvas.offsetWidth || 390
-    const H = canvas.offsetHeight || 600
-    canvas.width = W
-    canvas.height = H
-
-    const COLORS = ['#FEE500', '#03C75A', '#3B6FE8', '#FF4757', '#FF6B35', '#A29BFE', '#FD79A8', '#00CEC9', '#FDCB6E', '#E17055']
-
-    type Particle = {
-      x: number; y: number
-      vx: number; vy: number
-      w: number; h: number
-      rot: number; rotV: number
-      color: string; alpha: number
-      shape: 'rect' | 'circle' | 'ribbon'
-    }
-
-    // 두 곳에서 터트리기 (좌상/우상)
-    const burst = (cx: number, count: number): Particle[] =>
-      Array.from({ length: count }, () => {
-        const angle = Math.random() * Math.PI * 2
-        const speed = Math.random() * 9 + 3
-        return {
-          x: cx, y: H * 0.15,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 6,
-          w: Math.random() * 9 + 3,
-          h: Math.random() * 5 + 2,
-          rot: Math.random() * 360,
-          rotV: (Math.random() - 0.5) * 12,
-          color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          alpha: 1,
-          shape: (['rect', 'rect', 'circle', 'ribbon'] as const)[Math.floor(Math.random() * 4)],
-        }
-      })
-
-    const particles: Particle[] = [
-      ...burst(W * 0.25, 55),
-      ...burst(W * 0.75, 55),
-      ...burst(W * 0.5,  30),
-    ]
-
-    let raf: number
-    const start = performance.now()
-
-    const tick = (now: number) => {
-      ctx.clearRect(0, 0, W, H)
-      const t = now - start
-
-      for (const p of particles) {
-        p.vy += 0.22        // 중력
-        p.vx *= 0.985       // 공기 저항
-        p.x  += p.vx
-        p.y  += p.vy
-        p.rot += p.rotV
-
-        if (t > 1800) p.alpha = Math.max(0, p.alpha - 0.012)
-
-        ctx.save()
-        ctx.globalAlpha = p.alpha
-        ctx.translate(p.x, p.y)
-        ctx.rotate((p.rot * Math.PI) / 180)
-        ctx.fillStyle = p.color
-
-        if (p.shape === 'circle') {
-          ctx.beginPath()
-          ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2)
-          ctx.fill()
-        } else if (p.shape === 'ribbon') {
-          ctx.fillRect(-p.w / 2, -p.h / 4, p.w, p.h / 2)
-        } else {
-          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h)
-        }
-        ctx.restore()
-      }
-
-      if (t < 3800) raf = requestAnimationFrame(tick)
-    }
-
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [])
-
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 5 }}
-    />
-  )
-}
-
 // ── 메인 컴포넌트 ──────────────────────────────────────────
 export default function LoginFlow() {
   const navigate = useNavigate()
   const { login } = useAuth()
 
   const [step, setStep] = useState(1)
+  const [inputName, setInputName] = useState('')
   const [authMethod, setAuthMethod] = useState<string | null>(null)
   const [selectedFamily, setSelectedFamily] = useState<string[]>([])
   const [incomeRange, setIncomeRange] = useState<string | null>(null)
@@ -950,41 +851,54 @@ export default function LoginFlow() {
   // ── 완료 화면 ──
   if (done) {
     return (
-      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', height: '100%', padding: '24px 24px 16px', background: 'white', overflow: 'hidden' }}>
-        <Confetti />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 12 }}>
-          <div style={{ width: 96, height: 96, background: '#FFF7ED', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, fontSize: 52 }}>🎉</div>
-          <h2 style={{ fontSize: 22, fontWeight: 700, textAlign: 'center', marginBottom: 8 }}>혜택 분석 완료!</h2>
-          <p style={{ fontSize: 14, color: 'var(--text-secondary)', textAlign: 'center', marginBottom: 28 }}>지금 바로 받을 수 있는 혜택을 찾았어요</p>
-
-          <div style={{ background: 'var(--primary)', borderRadius: 20, padding: '24px 28px', textAlign: 'center', width: '100%', marginBottom: 16 }}>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, marginBottom: 6 }}>예상 환급 / 절세 금액</p>
-            <p style={{ color: 'white', fontSize: 42, fontWeight: 700, marginBottom: 4 }}>128만원</p>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 12 }}>공제 혜택 25개 · 지원금 12개 발견</p>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '32px 24px 16px', background: 'white' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          {/* 체크마크 */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
+            <div style={{ width: 52, height: 52, borderRadius: '50%', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div>
+              <h2 style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.3 }}>가입을 완료했어요</h2>
+              <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginTop: 3 }}>아래 내용을 확인해보세요</p>
+            </div>
           </div>
 
-          <div style={{ display: 'flex', gap: 10, width: '100%', marginBottom: 20 }}>
-            {[{ label: '절세 공제', amount: '87.6만', icon: '💰' }, { label: '정부 지원금', amount: '36만', icon: '🏛️' }, { label: '신청 예정', amount: '12만', icon: '📋' }].map((item, i) => (
-              <div key={i} style={{ flex: 1, background: 'var(--bg-gray)', borderRadius: 12, padding: '14px 10px', textAlign: 'center' }}>
-                <div style={{ fontSize: 22, marginBottom: 6 }}>{item.icon}</div>
-                <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 2 }}>{item.amount}원</div>
-                <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>{item.label}</div>
-              </div>
-            ))}
+          {/* 예상 혜택 요약 */}
+          <div style={{ border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden', marginBottom: 16 }}>
+            <div style={{ background: 'var(--primary)', padding: '16px 20px' }}>
+              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 12, marginBottom: 4 }}>예상 환급 · 절세 금액</p>
+              <p style={{ color: 'white', fontSize: 32, fontWeight: 700 }}>128만원</p>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', background: 'white' }}>
+              {[
+                { label: '절세 공제 항목', value: '87.6만원' },
+                { label: '정부 지원금', value: '36만원' },
+                { label: '즉시 신청 가능', value: '12만원' },
+              ].map((row, i, arr) => (
+                <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '13px 20px', borderBottom: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>
+                  <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{row.label}</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)' }}>{row.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div style={{ width: '100%', background: 'var(--bg-gray)', borderRadius: 14, padding: '14px 16px' }}>
-            <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 10 }}>🔗 연결된 마이데이터 기관</p>
+          {/* 연결된 기관 */}
+          <div style={{ background: 'var(--bg-gray)', borderRadius: 14, padding: '14px 16px' }}>
+            <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 10 }}>연결된 마이데이터 기관</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {mydataOrgs.filter(o => connectedOrgs.includes(o.id)).map(o => (
-                <span key={o.id} className="badge badge-blue" style={{ fontSize: 12 }}>{o.icon} {o.name}</span>
+                <span key={o.id} className="badge badge-blue" style={{ fontSize: 12 }}>{o.name}</span>
               ))}
             </div>
           </div>
         </div>
 
         <div style={{ paddingTop: 16 }}>
-          <button className="btn-primary" onClick={() => { login('한비팅'); navigate('/') }}>홈에서 혜택 확인하기</button>
+          <button className="btn-primary" onClick={() => { login(inputName.trim() || '사용자'); navigate('/') }}>혜택 확인하기</button>
         </div>
       </div>
     )
@@ -1017,9 +931,20 @@ export default function LoginFlow() {
           {step === 1 && (
             <>
               <h2 style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.4, marginBottom: 6 }}>본인 인증을<br />진행해주세요</h2>
-              <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 28, lineHeight: 1.6 }}>
+              <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 24, lineHeight: 1.6 }}>
                 안전한 서비스 이용을 위해<br />간편하게 인증할 수 있어요
               </p>
+
+              <div style={{ marginBottom: 20 }}>
+                <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: 8 }}>이름</label>
+                <input
+                  className="input"
+                  value={inputName}
+                  onChange={e => setInputName(e.target.value)}
+                  placeholder="실명을 입력해주세요"
+                  style={{ fontSize: 15 }}
+                />
+              </div>
 
               <div style={{ background: 'var(--primary-light)', borderRadius: 16, padding: '20px', textAlign: 'center', marginBottom: 28 }}>
                 <div style={{ fontSize: 52, marginBottom: 10 }}>🔐</div>
@@ -1040,8 +965,8 @@ export default function LoginFlow() {
                   { label: 'PASS로 인증하기',  bg: 'var(--primary)', color: '#fff', icon: '📱', provider: 'pass'  as AuthProvider },
                 ].map(btn => (
                   <button key={btn.label}
-                    onClick={() => setActiveProvider(btn.provider)}
-                    style={{ width: '100%', height: 52, background: btn.bg, color: btn.color, border: authMethod === btn.label ? '2px solid #1A1A2E' : '2px solid transparent', borderRadius: 12, fontSize: 15, fontWeight: 600, fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                    onClick={() => { if (!inputName.trim()) return; setActiveProvider(btn.provider) }}
+                    style={{ width: '100%', height: 52, background: btn.bg, color: btn.color, border: authMethod === btn.label ? '2px solid #1A1A2E' : '2px solid transparent', borderRadius: 12, fontSize: 15, fontWeight: 600, fontFamily: 'inherit', cursor: inputName.trim() ? 'pointer' : 'default', opacity: inputName.trim() ? 1 : 0.45, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'opacity 0.15s' }}>
                     <span>{btn.icon}</span>{btn.label}
                   </button>
                 ))}
