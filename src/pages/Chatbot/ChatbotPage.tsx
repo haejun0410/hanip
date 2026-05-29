@@ -392,8 +392,8 @@ export default function ChatbotPage() {
         {messages.map((msg, i) => (
           <div key={i} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start', alignItems: 'flex-end', gap: 8 }}>
             {msg.role === 'ai' && (
-              <div style={{ width: 48, height: 48, background: selectedCoach.bg, border: `1px solid ${selectedCoach.accent}22`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <img src={selectedCoach.image} alt="" aria-hidden="true" style={{ width: 40, height: 40, objectFit: 'contain' }} />
+              <div style={{ width: 56, height: 56, background: selectedCoach.bg, border: `1px solid ${selectedCoach.accent}22`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
+                <img src={selectedCoach.image} alt="" aria-hidden="true" style={{ width: 54, height: 54, objectFit: 'contain' }} />
               </div>
             )}
             <div style={{ maxWidth: '75%', padding: '12px 14px', borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px', background: msg.role === 'user' ? 'var(--primary)' : 'white', color: msg.role === 'user' ? 'white' : 'var(--text-primary)', fontSize: 14, lineHeight: 1.6, boxShadow: 'var(--shadow-sm)', whiteSpace: 'pre-line' }}>

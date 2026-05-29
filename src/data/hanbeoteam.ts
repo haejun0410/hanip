@@ -5,7 +5,7 @@ export const HANBEOTEAM_NAME = '한버팀'
 export const hanbeoteamHome = {
   totalBenefit: '315',
   amountLabel: '총 받을 수 있는 혜택',
-  headline: '올해 놓칠 뻔한 혜택이 총 315만 원이에요!',
+  headline: '놓칠 뻔한 혜택이<br/><span style="color:#3B6FE8">총 315만 원</span>이에요!',
   summary: '절세(혜택) 추천 항목 3개',
   benefits: [
     { title: '근로장려금 및 자녀장려금', amount: '최대 300만 원', route: '/recommend/eitc-child' },

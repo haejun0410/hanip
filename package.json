@@ -10,6 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@iconify-json/fluent-emoji": "^1.2.7",
+    "@iconify-json/noto": "^1.2.7",
+    "@iconify-json/twemoji": "^1.2.5",
+    "@iconify/react": "^6.0.2",
+    "lucide-react": "^1.17.0",
     "react": "^19.2.6",
     "react-calendar": "^6.0.1",
     "react-dom": "^19.2.6",

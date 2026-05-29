@@ -1,0 +1,295 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1780061957177,
+  "projectRoot": "/Users/haejun/Desktop/Project/hanip",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "react",
+        "version": "19.2.6",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.6",
+        "category": "frontend"
+      },
+      {
+        "name": "vite",
+        "version": "8.0.12",
+        "category": "build"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": "npm run lint",
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc -b && vite build",
+      "lint": "eslint .",
+      "preview": "vite preview"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": "type-based"
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 3,
+      "lastAccessed": 1780061957162,
+      "keyFiles": [
+        "favicon.svg",
+        "icons.svg",
+        "logo.png"
+      ]
+    },
+    "sample": {
+      "path": "sample",
+      "purpose": null,
+      "fileCount": 11,
+      "lastAccessed": 1780061957163,
+      "keyFiles": [
+        "chatbot.png",
+        "chatbot_friend.png",
+        "chatbot_init.png",
+        "login_process.png",
+        "main_page.png"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 4,
+      "lastAccessed": 1780061957170,
+      "keyFiles": [
+        "App.css",
+        "App.tsx",
+        "index.css",
+        "main.tsx"
+      ]
+    },
+    "src/assets": {
+      "path": "src/assets",
+      "purpose": "Static assets",
+      "fileCount": 14,
+      "lastAccessed": 1780061957171,
+      "keyFiles": [
+        "coach-bear-source.png",
+        "coach-bear.png",
+        "coach-owl-source.png"
+      ]
+    },
+    "src/components": {
+      "path": "src/components",
+      "purpose": "UI components",
+      "fileCount": 0,
+      "lastAccessed": 1780061957172,
+      "keyFiles": []
+    },
+    "src/data": {
+      "path": "src/data",
+      "purpose": "Data files",
+      "fileCount": 2,
+      "lastAccessed": 1780061957172,
+      "keyFiles": [
+        "hanbeoteam.ts",
+        "kimgodsaeng.ts"
+      ]
+    },
+    "src/pages": {
+      "path": "src/pages",
+      "purpose": "Page components",
+      "fileCount": 0,
+      "lastAccessed": 1780061957172,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src/index.css",
+      "accessCount": 55,
+      "lastAccessed": 1780070012118,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/MyPage/MyPage.tsx",
+      "accessCount": 31,
+      "lastAccessed": 1780068180225,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Home/HomePage.tsx",
+      "accessCount": 21,
+      "lastAccessed": 1780069792020,
+      "type": "file"
+    },
+    {
+      "path": "src/components/Emoji/Emoji.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1780068701704,
+      "type": "file"
+    },
+    {
+      "path": "src/App.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1780066518223,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Chatbot/ChatbotPage.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1780067874556,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Recommend/RecommendPage.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1780068200650,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Policy/PolicyPage.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1780068209096,
+      "type": "file"
+    },
+    {
+      "path": "src/data/kimgodsaeng.ts",
+      "accessCount": 4,
+      "lastAccessed": 1780070047964,
+      "type": "file"
+    },
+    {
+      "path": "src/data/hanbeoteam.ts",
+      "accessCount": 3,
+      "lastAccessed": 1780069838551,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 2,
+      "lastAccessed": 1780062065235,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/MyPage/ProfileEditPage.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1780066669754,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 1,
+      "lastAccessed": 1780061978060,
+      "type": "file"
+    },
+    {
+      "path": "vite.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1780061978257,
+      "type": "file"
+    },
+    {
+      "path": "tsconfig.app.json",
+      "accessCount": 1,
+      "lastAccessed": 1780061978668,
+      "type": "file"
+    },
+    {
+      "path": "src/context/AuthContext.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780061980966,
+      "type": "file"
+    },
+    {
+      "path": "src/context/ChatbotCoachContext.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780061981176,
+      "type": "file"
+    },
+    {
+      "path": "src/context/StreakContext.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780061981370,
+      "type": "file"
+    },
+    {
+      "path": "src/components/Header/HeaderContext.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780061984791,
+      "type": "file"
+    },
+    {
+      "path": "src/components/Header/useHeaderConfig.ts",
+      "accessCount": 1,
+      "lastAccessed": 1780061986965,
+      "type": "file"
+    },
+    {
+      "path": "design.md",
+      "accessCount": 1,
+      "lastAccessed": 1780061992877,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Login/LoginFlow.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780066579911,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Chatbot/ChatbotInitPage.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780067253835,
+      "type": "file"
+    },
+    {
+      "path": "src/hooks/useMissions.ts",
+      "accessCount": 1,
+      "lastAccessed": 1780067598915,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

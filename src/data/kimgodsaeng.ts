@@ -5,7 +5,7 @@ export const KIMGODSAENG_NAME = '김갓생'
 export const kimgodsaengHome = {
   totalBenefit: '145',
   amountLabel: '예상 환급액',
-  headline: '지금 소비 습관 유지 시 예상 환급액은 총 145만 원이에요!',
+  headline: '예상 환급액은<br/><span style="color:#3B6FE8">총 145만 원</span>이에요!',
   summary: '절세(혜택) 추천 항목 3개',
   benefits: [
     { title: '월세액 세액공제', amount: '월세의 17% 공제', route: '/recommend/monthly-rent' },

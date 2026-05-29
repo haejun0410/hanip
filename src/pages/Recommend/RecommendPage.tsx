@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import Emoji from '../../components/Emoji/Emoji'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME, hanbeoteamRecommendations } from '../../data/hanbeoteam'
@@ -51,7 +52,7 @@ export default function RecommendPage() {
               fontSize: 28,
               marginBottom: 12,
             }}>
-              {item.emoji}
+              <Emoji char={item.emoji} size={26} />
             </div>
 
             <p style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4, lineHeight: 1.35, paddingRight: 16 }}>

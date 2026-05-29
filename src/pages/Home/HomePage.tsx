@@ -3,6 +3,8 @@ import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME, hanbeoteamHome } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME, kimgodsaengHome } from '../../data/kimgodsaeng'
+import { useMissions } from '../../hooks/useMissions'
+import Emoji from '../../components/Emoji/Emoji'
 import heroBenefitsImage from '../../assets/hero-benefits.png'
 import heroGlassesImage from '../../assets/hero-glasses.png'
 
@@ -29,6 +31,8 @@ export default function HomePage() {
   }
   useHeaderConfig({ showLogo: true, showBell: true, badgeCount: 2 })
 
+  const { doneCount, total, pct, nextMissions } = useMissions(userName ?? '')
+
   return (
     <div style={{ background: 'var(--bg-default)', minHeight: '100%' }}>
       <section className="home-benefit-hero">
@@ -36,10 +40,9 @@ export default function HomePage() {
           <div className="home-benefit-copy">
             <span>중요 알림</span>
             <h1>
-              <span className="home-benefit-name">{userName}님,</span>
-              <span className="home-benefit-headline" dangerouslySetInnerHTML={{ __html: homeData.headline }} />
+              <span style={{ color: '#3B6FE8' }}>{userName}</span>
+              <span className="home-benefit-headline" dangerouslySetInnerHTML={{ __html: '님, ' + homeData.headline }} />
             </h1>
-            <p>{homeData.summary}</p>
           </div>
           <img src={heroBenefitsImage} alt="" aria-hidden="true" />
         </div>
@@ -61,6 +64,69 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* 내 미션 현황 */}
+      <div style={{ padding: '20px 16px 24px', background: 'var(--bg-default)' }}>
+        {/* 헤더 */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+          <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)' }}>내 미션 보러가기</span>
+          <button onClick={() => navigate('/mypage')} style={{ fontSize: 13, color: 'var(--primary)', fontWeight: 600, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
+            전체 보기 ›
+          </button>
+        </div>
+
+        {/* 진행 카드 */}
+        <div style={{ background: 'white', borderRadius: 20, padding: '16px 18px', boxShadow: '0 1px 6px rgba(0,0,0,0.06)', marginBottom: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+              <span style={{ fontSize: 28, fontWeight: 800, color: 'var(--primary)' }}>{doneCount}</span>
+              <span style={{ fontSize: 14, color: 'var(--text-secondary)', fontWeight: 600 }}>/ {total} 완료</span>
+            </div>
+            <span style={{ fontSize: 13, fontWeight: 700, color: 'white', background: 'var(--primary)', borderRadius: 99, padding: '4px 10px' }}>{pct}%</span>
+          </div>
+          <div style={{ height: 7, background: 'var(--border)', borderRadius: 99, overflow: 'hidden', marginBottom: 14 }}>
+            <div style={{ height: '100%', width: `${pct}%`, background: 'var(--primary)', borderRadius: 99, transition: 'width 0.4s ease' }} />
+          </div>
+
+          {/* 카테고리 바 */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>💰 절세 혜택</span>
+            <div style={{ flex: 1, height: 6, background: 'var(--border)', borderRadius: 99, overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${pct}%`, background: 'var(--primary)', borderRadius: 99 }} />
+            </div>
+            <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--primary)', whiteSpace: 'nowrap' }}>{pct}%</span>
+          </div>
+
+          {/* 다음 미션 */}
+          {nextMissions.length > 0 && (
+            <div>
+              <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-tertiary)', marginBottom: 10 }}>다음 미션</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                {nextMissions.slice(0, 2).map((m, i) => (
+                  <div
+                    key={m.id}
+                    onClick={() => navigate('/mypage')}
+                    style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 0', borderTop: i > 0 ? '1px solid var(--border)' : 'none', cursor: 'pointer' }}
+                  >
+                    <div style={{ width: 42, height: 42, borderRadius: 13, background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>
+                      <Emoji char={m.emoji} size={24} />
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.3 }}>{m.title}</p>
+                      <p style={{ fontSize: 12, color: 'var(--text-tertiary)', marginTop: 2 }}>{m.sub}</p>
+                    </div>
+                    {m.badge ? (
+                      <span style={{ fontSize: 11, fontWeight: 700, color: m.badgeColor, background: (m.badgeColor ?? '#000') + '18', borderRadius: 8, padding: '4px 8px', flexShrink: 0 }}>{m.badge}</span>
+                    ) : (
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}><path d="M9 18l6-6-6-6" stroke="#D1D5DB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
 
       <section className="home-knowledge-card">
         <div>

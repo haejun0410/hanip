@@ -1,40 +1,15 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import { useAuth } from '../../context/AuthContext'
 import { useChatbotCoach } from '../../context/ChatbotCoachContext'
 import { HANBEOTEAM_NAME } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME } from '../../data/kimgodsaeng'
-
-type Mission = {
-  id: string
-  emoji: string
-  title: string
-  sub: string
-  badge?: string
-  badgeColor?: string
-  done: boolean
-}
-
-const HANBEOTEAM_MISSIONS: Mission[] = [
-  { id: 'm1', emoji: '💰', title: '근로장려금 신청하기', sub: '최대 300만원 · 5.31 마감', badge: '마감 임박', badgeColor: '#EF4444', done: false },
-  { id: 'm2', emoji: '👩‍👧', title: '한부모 소득공제 서류 준비', sub: '최대 100만원 · 약 10분', badge: '보통', badgeColor: '#F59E0B', done: false },
-  { id: 'm3', emoji: '👶', title: '아동양육비 신청 확인', sub: '최대 21만원/월 · 약 5분', done: true },
-  { id: 'm4', emoji: '🎨', title: '문화누리카드 신청', sub: '연 13만원 · 약 5분', done: true },
-  { id: 'm5', emoji: '🏥', title: '건강보험 납부 내역 확인', sub: '최대 30만원 · 약 5분', done: true },
-]
-
-const KIMGODSAENG_MISSIONS: Mission[] = [
-  { id: 'm1', emoji: '🏠', title: '월세 세액공제 서류 준비하기', sub: '최대 75만원 · 12.31 마감', badge: '마감 임박', badgeColor: '#EF4444', done: false },
-  { id: 'm2', emoji: '🏦', title: 'ISA 계좌 개설 검토하기', sub: '최대 200만원 · 약 15분', badge: '보통', badgeColor: '#F59E0B', done: false },
-  { id: 'm3', emoji: '💳', title: '신용카드 vs 체크카드 비율 확인', sub: '최대 30만원 · 약 10분', done: true },
-  { id: 'm4', emoji: '🩺', title: '의료비 공제 가능 여부 체크', sub: '최대 15만원 · 약 5분', done: true },
-  { id: 'm5', emoji: '📈', title: '연금저축 납입 현황 확인', sub: '최대 66만원 · 약 5분', done: true },
-]
+import { useMissions } from '../../hooks/useMissions'
+import Emoji from '../../components/Emoji/Emoji'
 
 export default function MyPage() {
   const navigate = useNavigate()
-  const { logout, userName } = useAuth()
+  const { login, logout, userName } = useAuth()
   const { selectedCoach } = useChatbotCoach()
   const isHanbeoteam = userName === HANBEOTEAM_NAME
   const isKimgodsaeng = userName === KIMGODSAENG_NAME
@@ -45,17 +20,7 @@ export default function MyPage() {
     : '27세 · 1인 가구'
   useHeaderConfig({ title: '마이페이지', showBell: true, badgeCount: 2 })
 
-  const initialMissions = isHanbeoteam ? HANBEOTEAM_MISSIONS : isKimgodsaeng ? KIMGODSAENG_MISSIONS : KIMGODSAENG_MISSIONS
-  const [missions, setMissions] = useState<Mission[]>(initialMissions)
-
-  const toggleMission = (id: string) => {
-    setMissions(prev => prev.map(m => m.id === id ? { ...m, done: !m.done } : m))
-  }
-
-  const doneCount = missions.filter(m => m.done).length
-  const total = missions.length
-  const pct = Math.round((doneCount / total) * 100)
-  const hasUrgent = missions.some(m => !m.done && m.badge === '마감 임박')
+  const { missions, toggleMission, doneCount, total, pct, hasUrgent } = useMissions(userName ?? '')
 
   return (
     <div>
@@ -167,7 +132,7 @@ export default function MyPage() {
               }}>
                 {m.done
                   ? <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  : m.emoji}
+                  : <Emoji char={m.emoji} size={26} />}
               </div>
 
               {/* 텍스트 */}
@@ -187,11 +152,11 @@ export default function MyPage() {
         </div>
       </div>
 
-      {/* Logout */}
+      {/* Logout + 페르소나 */}
       <div style={{ background: 'white', marginTop: 8, padding: '16px' }}>
         <button
           onClick={() => { logout(); navigate('/') }}
-          style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 0', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', width: '100%', textAlign: 'left' }}
+          style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 0', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', width: '100%', textAlign: 'left', borderBottom: '1px solid var(--border)' }}
         >
           <span style={{ width: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -201,6 +166,18 @@ export default function MyPage() {
           <span style={{ flex: 1, fontSize: 14, color: 'var(--text-primary)' }}>로그아웃</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#D1D5DB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
+
+        <div style={{ paddingTop: 16 }}>
+          <p style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-secondary)', marginBottom: 10 }}>시연용 페르소나 데이터</p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+            <button onClick={() => login(HANBEOTEAM_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 16, background: userName === HANBEOTEAM_NAME ? 'var(--primary)' : 'var(--primary-light)', color: userName === HANBEOTEAM_NAME ? 'white' : 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+              한버팀
+            </button>
+            <button onClick={() => login(KIMGODSAENG_NAME)} style={{ height: 44, border: '1.5px solid var(--primary)', borderRadius: 16, background: userName === KIMGODSAENG_NAME ? 'var(--primary)' : 'white', color: userName === KIMGODSAENG_NAME ? 'white' : 'var(--primary)', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+              김갓생
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )
