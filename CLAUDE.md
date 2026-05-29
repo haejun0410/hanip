@@ -62,3 +62,29 @@ Defined in `src/index.css` and used across pages via `className`:
 | `.section` / `.section-header` / `.section-title` | Page section layout helpers |
 | `.divider` | 8px gray horizontal separator |
 | `.scroll-x` | Horizontal scroll container |
+
+### Persona-based data routing
+
+Two hardcoded user personas live in `src/data/`: `hanbeoteam.ts` (single mother) and `kimgodsaeng.ts` (young adult). Pages resolve data by checking `userName` from `useAuth()` against the persona name constant, then selecting the matching dataset. When adding new data-driven pages, follow this same branch pattern.
+
+### Chatbot answer system (`src/pages/Chatbot/`)
+
+The chatbot is purely frontend — no LLM API. `ChatbotPage` resolves answers via two indexed maps:
+
+- **`ragAnswers`**: keyed `[question_text][coach_id]`; `findRagAnswer()` normalizes input, scores keywords, returns a match if score ≥ 2.
+- **`quickReplyAnswers`**: exact-match map for preset quick-reply buttons.
+
+Three coach levels (`easy` / `summary` / `strategy`) provide different answer styles for the same question. The UI simulates a 3-step search with 850 ms delays before showing the final answer. Coach selection is persisted in `localStorage` under `hanip-chatbot-coach` via `ChatbotCoachContext`; the page redirects to `/chatbot/init` if no coach is set.
+
+### Global contexts
+
+| Context | Storage | Purpose |
+|---|---|---|
+| `AuthContext` | In-memory | `isLoggedIn`, `userName`, `login()`, `logout()` |
+| `ChatbotCoachContext` | `localStorage` | Selected coach ID; validates saved ID against known profiles on load |
+| `StreakContext` | `localStorage` | Daily activity streak; seeds 7 days of history on first load |
+| `HeaderContext` | In-memory | Per-page header config written by `useHeaderConfig()` |
+
+### Stack
+
+React 19, React Router 7, Vite 8, TypeScript 6 (strict mode). No test suite.

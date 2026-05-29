@@ -23,6 +23,7 @@ import PolicyGuestPage from './pages/Policy/PolicyGuestPage'
 import PolicyDetailPage from './pages/Policy/PolicyDetailPage'
 import MyPage from './pages/MyPage/MyPage'
 import MyPageGuest from './pages/MyPage/MyPageGuest'
+import ProfileEditPage from './pages/MyPage/ProfileEditPage'
 import NoticePage from './pages/Notice/NoticePage'
 
 function AppShell() {
@@ -49,6 +50,7 @@ function AppShell() {
           <Route path="/policy"      element={isLoggedIn ? <PolicyPage />     : <PolicyGuestPage />} />
           <Route path="/policy/:id"  element={isLoggedIn ? <PolicyDetailPage /> : <PolicyGuestPage />} />
           <Route path="/mypage"      element={isLoggedIn ? <MyPage />         : <MyPageGuest />} />
+          <Route path="/mypage/edit" element={isLoggedIn ? <ProfileEditPage /> : <MyPageGuest />} />
           <Route path="/notice"      element={isLoggedIn ? <NoticePage />     : <MyPageGuest />} />
         </Routes>
       </div>
