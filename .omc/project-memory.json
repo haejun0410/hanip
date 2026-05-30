@@ -153,15 +153,15 @@
       "type": "file"
     },
     {
-      "path": "src/pages/MyPage/MyPage.tsx",
-      "accessCount": 31,
-      "lastAccessed": 1780068180225,
+      "path": "src/pages/Home/HomePage.tsx",
+      "accessCount": 37,
+      "lastAccessed": 1780127469850,
       "type": "file"
     },
     {
-      "path": "src/pages/Home/HomePage.tsx",
-      "accessCount": 21,
-      "lastAccessed": 1780069792020,
+      "path": "src/pages/MyPage/MyPage.tsx",
+      "accessCount": 31,
+      "lastAccessed": 1780068180225,
       "type": "file"
     },
     {
