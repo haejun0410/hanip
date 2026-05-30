@@ -100,7 +100,7 @@ export default function RecommendPage() {
             내 맞춤 혜택 찾기 →
           </button>
         </div>
-        <div style={{ fontSize: 64, flexShrink: 0, marginLeft: 8, opacity: 0.9 }}>🔍</div>
+        <Emoji char="🔍" size={56} color="white" style={{ flexShrink: 0, marginLeft: 8, opacity: 0.9 }} />
       </div>
     </div>
   )

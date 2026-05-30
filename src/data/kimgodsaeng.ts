@@ -217,7 +217,7 @@ export const kimgodsaengAiBenefits: AiBenefit[] = [
     amount: 240000,
     amountLabel: '예상 절세 금액',
     aiReason: '매월 고정 월세 이체 내역이 확인됐어요. 전입신고와 임대차계약서 주소 일치 여부를 확인해 주세요.',
-    conditions: ['무주택 세대주인가요?', '전입신고가 되어 있나요?', '임대차계약서 주소와 실거주지가 일치하나요?'],
+    conditions: ['무주택 세대주인가요?', '전입신고가 되어 있나요?', '임대차계약서 주소와 현재 거주지가 일치하나요?'],
   },
   {
     id: 'youth-rent-ai',
@@ -228,10 +228,10 @@ export const kimgodsaengAiBenefits: AiBenefit[] = [
     subtitle: '청년 주거비 부담 완화 사업',
     statusLabel: '신청 가능',
     statusColor: '#2563EB',
-    amount: 240000,
+    amount: 4800000,
     amountLabel: '최대 지원 금액',
     aiReason: '26세 1인 가구 월세 거주 조건으로 청년월세지원 신청 대상입니다. 국토교통부 사업 기준으로 분석했어요.',
-    conditions: ['만 19~34세인가요?', '무주택 청년 1인 가구인가요?', '월세 60만원 이하인가요?'],
+    conditions: ['만 19~34세인가요?', '부모님과 별도 거주 중인 무주택 청년인가요?', '가구 소득 기준을 충족하나요?'],
   },
   {
     id: 'glasses-ai',
@@ -245,7 +245,7 @@ export const kimgodsaengAiBenefits: AiBenefit[] = [
     amount: 150000,
     amountLabel: '공제 가능 금액',
     aiReason: 'OO안경원에서 150,000원이 결제된 내역이 있어요. 시력교정용 안경/렌즈 구입비일 가능성이 있습니다.',
-    conditions: ['시력교정용 안경/렌즈인가요?', '영수증이 있나요?', '본인 또는 부양가족 지출인가요?'],
+    conditions: ['시력교정용 안경/렌즈인가요?', '본인 또는 부양가족을 위한 지출인가요?', '영수증이나 구입 확인서가 있나요?'],
   },
   {
     id: 'monthly-transfer-ai',
@@ -259,6 +259,6 @@ export const kimgodsaengAiBenefits: AiBenefit[] = [
     amount: 700000,
     amountLabel: '공제 가능 금액',
     aiReason: '매월 고정 이체 내역이 확인됐어요. 월세 공제 신청 시 추가 환급액이 늘 수 있어요.',
-    conditions: ['임대인 계좌로의 월세 이체인가요?', '임대차계약서가 있나요?', '전입신고가 완료되었나요?'],
+    conditions: ['임대인 계좌로의 월세 이체인가요?', '현재 거주지 주소로 작성된 계약서가 있나요?', '전입신고가 완료되었나요?'],
   },
 ]

@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
+import Emoji from '../../components/Emoji/Emoji'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME, hanbeoteamAiBenefits } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME, kimgodsaengAiBenefits } from '../../data/kimgodsaeng'
@@ -58,7 +59,7 @@ export default function AiBenefitDetailPage() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
           <div style={{ width: 54, height: 54, borderRadius: 16, background: benefit.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, flexShrink: 0 }}>
-            {benefit.icon}
+            <Emoji char={benefit.icon} size={26} />
           </div>
           <div>
             <p style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1.2 }}>{benefit.title}</p>
@@ -97,7 +98,7 @@ export default function AiBenefitDetailPage() {
 
       {/* CTA 버튼 */}
       <div style={{ padding: '20px 16px 0' }}>
-        <button className="btn-primary" onClick={() => navigate('/chatbot')} style={{ marginBottom: 10 }}>
+        <button className="btn-primary" onClick={() => navigate(`/ai-benefits/${benefit.id}/chat`)} style={{ marginBottom: 10 }}>
           AI와 확인하기
         </button>
         {benefit.type === 'hidden' && (

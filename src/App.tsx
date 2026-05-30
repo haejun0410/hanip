@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom'
 import './index.css'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { ChatbotCoachProvider } from './context/ChatbotCoachContext'
@@ -26,7 +26,13 @@ import MyPageGuest from './pages/MyPage/MyPageGuest'
 import ProfileEditPage from './pages/MyPage/ProfileEditPage'
 import AiBenefitsPage from './pages/AiBenefits/AiBenefitsPage'
 import AiBenefitDetailPage from './pages/AiBenefits/AiBenefitDetailPage'
+import BenefitChatPage from './pages/AiBenefits/BenefitChatPage'
 import NoticePage from './pages/Notice/NoticePage'
+
+function BenefitChatRoute() {
+  const { id } = useParams()
+  return <BenefitChatPage key={id} />
+}
 
 function AppShell() {
   const { isLoggedIn } = useAuth()
@@ -54,8 +60,9 @@ function AppShell() {
           <Route path="/mypage"      element={isLoggedIn ? <MyPage />         : <MyPageGuest />} />
           <Route path="/mypage/edit" element={isLoggedIn ? <ProfileEditPage /> : <MyPageGuest />} />
           <Route path="/notice"      element={isLoggedIn ? <NoticePage />     : <MyPageGuest />} />
-          <Route path="/ai-benefits"     element={isLoggedIn ? <AiBenefitsPage />      : <MyPageGuest />} />
-          <Route path="/ai-benefits/:id" element={isLoggedIn ? <AiBenefitDetailPage /> : <MyPageGuest />} />
+          <Route path="/ai-benefits"          element={isLoggedIn ? <AiBenefitsPage />      : <MyPageGuest />} />
+          <Route path="/ai-benefits/:id"      element={isLoggedIn ? <AiBenefitDetailPage /> : <MyPageGuest />} />
+          <Route path="/ai-benefits/:id/chat" element={isLoggedIn ? <BenefitChatRoute />    : <MyPageGuest />} />
         </Routes>
       </div>
       <BottomNav />

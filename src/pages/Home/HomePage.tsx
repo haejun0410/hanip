@@ -38,7 +38,7 @@ export default function HomePage() {
           절약 AI가 최근 금융 활동을 확인했어요!
         </p>
         <h1 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 16 }}>
-          안녕하세요, <span style={{ color: 'var(--primary)' }}>{userName}</span>님 👋
+          안녕하세요, <span style={{ color: 'var(--primary)' }}>{userName}</span>님
         </h1>
       </div>
 
@@ -98,7 +98,7 @@ export default function HomePage() {
         </div>
 
         {nextMissions.length === 0 ? (
-          <p style={{ fontSize: 13, color: 'var(--text-tertiary)', textAlign: 'center', padding: '12px 0' }}>모든 미션을 완료했어요 🎉</p>
+          <p style={{ fontSize: 13, color: 'var(--text-tertiary)', textAlign: 'center', padding: '12px 0' }}>모든 미션을 완료했어요</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {nextMissions.slice(0, 3).map((m, i) => (
@@ -132,7 +132,7 @@ export default function HomePage() {
           {[
             { icon: TrendingUp, label: '절세 추천', desc: '연말정산·세액공제 중심', route: '/recommend', bg: '#F0FBF4', iconBg: '#D1FAE5', color: '#16A34A' },
             { icon: Building, label: '정책 추천', desc: '정부/지자체 지원사업 중심', route: '/policy', bg: '#EFF6FF', iconBg: '#DBEAFE', color: '#2563EB' },
-            { icon: Sparkles, label: '숨은 공제 탐지', desc: '카드·계좌 거래 기반 공제 후보', route: '/recommend', bg: '#FAF5FF', iconBg: '#EDE9FE', color: '#7C3AED' },
+            { icon: Sparkles, label: '숨은 공제 탐지', desc: '카드·계좌 거래 기반 공제 후보', route: '/ai-benefits', bg: '#FAF5FF', iconBg: '#EDE9FE', color: '#7C3AED' },
           ].map(({ icon: Icon, label, desc, route, bg, iconBg, color }) => (
             <button
               key={label}

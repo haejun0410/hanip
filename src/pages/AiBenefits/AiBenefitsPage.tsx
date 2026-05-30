@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
+import Emoji from '../../components/Emoji/Emoji'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME, hanbeoteamAiBenefits } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME, kimgodsaengAiBenefits } from '../../data/kimgodsaeng'
@@ -81,7 +82,7 @@ export default function AiBenefitsPage() {
           >
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
               <div style={{ width: 46, height: 46, borderRadius: 14, background: benefit.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>
-                {benefit.icon}
+                <Emoji char={benefit.icon} size={22} />
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <span className={`badge ${TYPE_BADGE[benefit.type]}`} style={{ fontSize: 10, marginBottom: 6, display: 'inline-block' }}>

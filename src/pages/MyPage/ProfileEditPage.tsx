@@ -4,6 +4,7 @@ import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME } from '../../data/kimgodsaeng'
+import Emoji from '../../components/Emoji/Emoji'
 
 type ProfileData = {
   age: string
@@ -279,7 +280,7 @@ export default function ProfileEditPage() {
                 return (
                   <button key={opt.label} onClick={() => setForm(prev => ({ ...prev, familyType: opt.label }))}
                     style={{ padding: '14px 8px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 18, cursor: 'pointer', textAlign: 'center', fontFamily: 'inherit', transition: 'all 0.15s' }}>
-                    <div style={{ fontSize: 30, marginBottom: 6 }}>{opt.icon}</div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 6 }}><Emoji char={opt.icon} size={30} /></div>
                     <div style={{ fontSize: 12, fontWeight: 700, color: selected ? 'var(--primary)' : 'var(--text-primary)', marginBottom: 2 }}>{opt.label}</div>
                     <div style={{ fontSize: 10, color: 'var(--text-tertiary)', lineHeight: 1.3 }}>{opt.sub}</div>
                   </button>
@@ -302,7 +303,7 @@ export default function ProfileEditPage() {
                 return (
                   <button key={opt.label} onClick={() => setForm(prev => ({ ...prev, housing: opt.label }))}
                     style={{ padding: '16px 18px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 18, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 16, transition: 'all 0.15s' }}>
-                    <span style={{ fontSize: 28 }}>{opt.icon}</span>
+                    <Emoji char={opt.icon} size={28} />
                     <div style={{ flex: 1 }}>
                       <p style={{ fontSize: 15, fontWeight: 600, color: selected ? 'var(--primary)' : 'var(--text-primary)', marginBottom: 2 }}>{opt.label}</p>
                       <p style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>{opt.sub}</p>

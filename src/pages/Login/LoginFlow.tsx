@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import { useAuth } from '../../context/AuthContext'
+import Emoji from '../../components/Emoji/Emoji'
 
 // ── 단계 정의 ──────────────────────────────────────────────
 const STEPS = ['본인 인증', '가족 관계', '소득 정보', '주식 정보', '마이데이터']
@@ -270,7 +271,7 @@ function AuthModal({ provider, onComplete, onClose }: AuthModalProps) {
 
               {/* 앱 아이콘 + 서비스명 */}
               <div style={{ padding: '24px 20px 16px', textAlign: 'center', borderBottom: '1px solid #EBEBEB' }}>
-                <div style={{ width: 60, height: 60, borderRadius: 18, background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 30, margin: '0 auto 10px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }}>🤖</div>
+                <div style={{ width: 60, height: 60, borderRadius: 18, background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }}><Emoji char="🤖" size={30} /></div>
                 <p style={{ fontSize: 15, fontWeight: 700, color: '#111', marginBottom: 2 }}>한입(HanIP)</p>
                 <p style={{ fontSize: 11, color: '#888' }}>hanip.app</p>
               </div>
@@ -388,7 +389,7 @@ function AuthModal({ provider, onComplete, onClose }: AuthModalProps) {
                 { icon: '⊞', label: 'QR코드', active: false },
               ].map((tab, i) => (
                 <div key={i} style={{ flex: 1, padding: '9px 4px', textAlign: 'center', background: tab.active ? '#03C75A' : 'white', borderRight: i < 2 ? '1px solid #DDDDDD' : 'none', cursor: 'pointer' }}>
-                  <p style={{ fontSize: 10, fontWeight: 700, color: tab.active ? 'white' : '#888', lineHeight: 1.3 }}>{tab.icon} {tab.label}</p>
+                  <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3, fontSize: 10, fontWeight: 700, color: tab.active ? 'white' : '#888', lineHeight: 1.3 }}><Emoji char={tab.icon} size={11} color={tab.active ? 'white' : '#888'} /> {tab.label}</p>
                 </div>
               ))}
             </div>
@@ -530,7 +531,7 @@ function AuthModal({ provider, onComplete, onClose }: AuthModalProps) {
         <ModalShell onClose={onClose} headerBg="#2448A5" headerColor="#fff" logo="PASS" title="PASS 본인인증">
           <div style={{ padding: '24px 24px 32px', display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: '#EEF2FF', borderRadius: 10 }}>
-              <span style={{ fontSize: 14 }}>📱</span>
+              <Emoji char="📱" size={14} color="#2448A5" />
               <p style={{ fontSize: 12, color: '#2448A5', fontWeight: 600 }}>선택한 통신사: {carrier}</p>
               <button onClick={() => setSubStep(1)} style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, color: '#2448A5', fontWeight: 600, fontFamily: 'inherit' }}>변경</button>
             </div>
@@ -625,7 +626,7 @@ function AuthModal({ provider, onComplete, onClose }: AuthModalProps) {
 function OAuthSuccess() {
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 24px', gap: 12 }}>
-      <div style={{ width: 64, height: 64, borderRadius: 20, background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 4, fontSize: 32 }}>🤖</div>
+      <div style={{ width: 64, height: 64, borderRadius: 20, background: '#EBF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 4 }}><Emoji char="🤖" size={32} /></div>
       <p style={{ fontSize: 16, fontWeight: 700, color: '#111', textAlign: 'center' }}>한입(HanIP)으로<br />돌아가는 중…</p>
       <p style={{ fontSize: 13, color: '#888', textAlign: 'center' }}>잠시만 기다려주세요</p>
       <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
@@ -831,7 +832,7 @@ export default function LoginFlow() {
   if (loading) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', padding: '40px 24px', background: 'white' }}>
-        <div style={{ width: 88, height: 88, background: 'var(--primary-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24, fontSize: 44 }}>🤖</div>
+        <div style={{ width: 88, height: 88, background: 'var(--primary-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}><Emoji char="🤖" size={44} /></div>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8, textAlign: 'center' }}>AI가 분석 중이에요</h2>
         <p style={{ color: 'var(--text-secondary)', fontSize: 14, textAlign: 'center', lineHeight: 1.6, marginBottom: 40 }}>
           연결된 마이데이터를 바탕으로<br />맞춤 혜택을 찾고 있어요
@@ -947,13 +948,13 @@ export default function LoginFlow() {
               </div>
 
               <div style={{ background: 'var(--primary-light)', borderRadius: 20, padding: '20px', textAlign: 'center', marginBottom: 28 }}>
-                <div style={{ fontSize: 52, marginBottom: 10 }}>🔐</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10 }}><Emoji char="🔐" size={52} /></div>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                   공인인증서 없이도 간편하게<br />본인 인증을 완료할 수 있어요
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: 20, marginTop: 14 }}>
-                  {['✅ 개인정보 보호', '✅ 3분 완성', '✅ 무료'].map(t => (
-                    <span key={t} style={{ fontSize: 12, color: 'var(--primary)', fontWeight: 600 }}>{t}</span>
+                  {['개인정보 보호', '3분 완성', '무료'].map(t => (
+                    <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 3, fontSize: 12, color: 'var(--primary)', fontWeight: 600 }}><Emoji char="✅" size={12} />{t}</span>
                   ))}
                 </div>
               </div>
@@ -967,7 +968,7 @@ export default function LoginFlow() {
                   <button key={btn.label}
                     onClick={() => { if (!inputName.trim()) return; setActiveProvider(btn.provider) }}
                     style={{ width: '100%', height: 52, background: btn.bg, color: btn.color, border: authMethod === btn.label ? '2px solid #1A1A2E' : '2px solid transparent', borderRadius: 16, fontSize: 15, fontWeight: 600, fontFamily: 'inherit', cursor: inputName.trim() ? 'pointer' : 'default', opacity: inputName.trim() ? 1 : 0.45, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'opacity 0.15s' }}>
-                    <span>{btn.icon}</span>{btn.label}
+                    <Emoji char={btn.icon} size={17} color={btn.color} />{btn.label}
                   </button>
                 ))}
               </div>
@@ -996,7 +997,7 @@ export default function LoginFlow() {
                         )
                       }}
                       style={{ padding: '14px 8px', background: selected ? 'var(--primary-light)' : 'var(--bg-gray)', border: selected ? '2px solid var(--primary)' : '2px solid transparent', borderRadius: 18, cursor: 'pointer', textAlign: 'center', fontFamily: 'inherit', transition: 'all 0.15s' }}>
-                      <div style={{ fontSize: 30, marginBottom: 6 }}>{opt.icon}</div>
+                      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 6 }}><Emoji char={opt.icon} size={30} /></div>
                       <div style={{ fontSize: 13, fontWeight: 700, color: selected ? 'var(--primary)' : 'var(--text-primary)', marginBottom: 2 }}>{opt.label}</div>
                       <div style={{ fontSize: 10, color: 'var(--text-tertiary)', lineHeight: 1.3 }}>{opt.sub}</div>
                     </button>
@@ -1098,12 +1099,12 @@ export default function LoginFlow() {
           {step === 5 && (
             <>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <span style={{ fontSize: 20 }}>🔗</span>
+                <Emoji char="🔗" size={20} />
                 <span className="badge badge-blue">마이데이터</span>
               </div>
               <h2 style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.4, marginBottom: 6 }}>마이데이터를<br />연결해주세요</h2>
               <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 8, lineHeight: 1.6 }}>연결하면 소득·의료비·금융 정보를 자동으로 가져와 더 정확한 혜택을 찾아드려요</p>
-              <p style={{ fontSize: 12, color: 'var(--text-tertiary)', marginBottom: 20 }}>🔒 필수 기관은 해제할 수 없어요</p>
+              <p style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color: 'var(--text-tertiary)', marginBottom: 20 }}><Emoji char="🔒" size={13} /> 필수 기관은 해제할 수 없어요</p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
                 {mydataOrgs.map(org => {
@@ -1112,7 +1113,7 @@ export default function LoginFlow() {
                     <button key={org.id} onClick={() => toggleOrg(org.id)}
                       style={{ padding: '14px 16px', background: connected ? 'var(--primary-light)' : 'white', border: connected ? '1.5px solid var(--primary)' : '1.5px solid var(--border)', borderRadius: 18, cursor: org.required ? 'default' : 'pointer', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 14, transition: 'all 0.15s' }}>
                       <div style={{ width: 44, height: 44, background: connected ? 'white' : 'var(--bg-gray)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0, boxShadow: connected ? 'var(--shadow-sm)' : 'none' }}>
-                        {org.icon}
+                        <Emoji char={org.icon} size={22} />
                       </div>
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
@@ -1131,7 +1132,7 @@ export default function LoginFlow() {
 
               <div style={{ background: 'var(--bg-gray)', borderRadius: 16, padding: '14px 16px' }}>
                 <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                  📌 연결된 기관: <strong style={{ color: 'var(--text-primary)' }}>{connectedOrgs.length}개</strong><br />
+                  연결된 기관: <strong style={{ color: 'var(--text-primary)' }}>{connectedOrgs.length}개</strong><br />
                   수집된 정보는 혜택 분석에만 활용되며, 제3자에게 제공되지 않아요
                 </p>
               </div>

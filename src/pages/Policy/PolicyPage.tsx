@@ -65,7 +65,7 @@ export default function PolicyPage() {
 
       <div className="section" style={{ paddingBottom: 12 }}>
         <div className="section-header">
-          <span className="section-title">추천 정책 ✨</span>
+          <span className="section-title">추천 정책</span>
           <button className="section-more">더보기 ›</button>
         </div>
         <div className="scroll-x" style={{ display: 'flex', gap: 12 }}>

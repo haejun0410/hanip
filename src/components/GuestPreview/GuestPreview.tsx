@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import type { ReactNode } from 'react'
+import Emoji from '../Emoji/Emoji'
 
 interface Props {
   children: ReactNode
@@ -39,7 +40,7 @@ export default function GuestPreview({
           border: '1.5px solid var(--border)',
         }}>
           <div style={{ width: 64, height: 64, background: 'var(--primary-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: 30 }}>
-            🔒
+            <Emoji char="🔒" size={30} />
           </div>
           <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8, color: 'var(--text-primary)' }}>
             {title}

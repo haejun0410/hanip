@@ -4,12 +4,13 @@ import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME, hanbeoteamNotices } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME, kimgodsaengNotices } from '../../data/kimgodsaeng'
+import Emoji from '../../components/Emoji/Emoji'
 
 const tabs = ['전체', '혜택 추천', '신청/처리 현황', '일반 알림']
 
 const benefitItems = [
   { emoji: '🏠', bg: '#FEF3C7', title: '유자원 결제 내역이 있으세요!', desc: '유자원이 전 주택 혜택을 받기 비기지 마세요?', sub: '임직원·근데 잠깐 버리지 않으세요', cta: '지금 바로 신청', date: '1일 전' },
-  { emoji: '🚗', bg: '#DBEAFE', title: '차를 구매하셨나요? 🚗', desc: '차량관련 공제 혜택도 놓치지 마세요!', sub: '자동차 관련 공제 혜택 확인하기', cta: '사용자 이전', date: '3일 전' },
+  { emoji: '🚗', bg: '#DBEAFE', title: '차를 구매하셨나요?', desc: '차량관련 공제 혜택도 놓치지 마세요!', sub: '자동차 관련 공제 혜택 확인하기', cta: '사용자 이전', date: '3일 전' },
 ]
 
 const statusItems = [
@@ -62,7 +63,7 @@ export default function NoticePage() {
               {notices.benefit.map((item, i) => (
                 <div key={i} style={{ background: 'white', borderRadius: 20, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
                   <div style={{ background: item.bg, padding: '20px 16px', display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <div style={{ width: 52, height: 52, background: 'white', borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>{item.emoji}</div>
+                    <div style={{ width: 52, height: 52, background: 'white', borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Emoji char={item.emoji} size={28} /></div>
                     <div style={{ flex: 1 }}>
                       <p style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{item.title}</p>
                       <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.4 }}>{item.desc}</p>
@@ -88,7 +89,7 @@ export default function NoticePage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {notices.status.map((item, i) => (
                 <div key={i} style={{ background: 'white', borderRadius: 18, padding: '14px 16px', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{ width: 44, height: 44, background: 'var(--bg-gray)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>{item.emoji}</div>
+                  <div style={{ width: 44, height: 44, background: 'var(--bg-gray)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Emoji char={item.emoji} size={22} /></div>
                   <div style={{ flex: 1 }}>
                     <p style={{ fontSize: 14, fontWeight: 600, marginBottom: 2 }}>{item.desc}</p>
                     <p style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>{item.date}</p>
@@ -109,7 +110,7 @@ export default function NoticePage() {
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {notices.general.map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '13px 0', borderBottom: i < notices.general.length - 1 ? '1px solid var(--border)' : 'none' }}>
-                  <div style={{ width: 36, height: 36, background: 'var(--bg-gray)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}>{item.emoji}</div>
+                  <div style={{ width: 36, height: 36, background: 'var(--bg-gray)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Emoji char={item.emoji} size={18} /></div>
                   <div style={{ flex: 1 }}>
                     <p style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 4 }}>{item.text}</p>
                     <p style={{ fontSize: 11, color: 'var(--text-tertiary)' }}>{item.date}</p>
@@ -121,7 +122,7 @@ export default function NoticePage() {
         )}
 
         <div style={{ margin: '0 16px 16px', background: 'var(--primary)', borderRadius: 20, padding: '20px', display: 'flex', alignItems: 'center', gap: 14 }}>
-          <div style={{ width: 52, height: 52, background: 'rgba(255,255,255,0.2)', borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>🤖</div>
+          <div style={{ width: 52, height: 52, background: 'rgba(255,255,255,0.2)', borderRadius: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Emoji char="🤖" size={28} color="white" /></div>
           <div style={{ flex: 1 }}>
             <p style={{ fontSize: 14, fontWeight: 700, color: 'white', marginBottom: 4 }}>더 궁금한 내용이 있으신가요?</p>
             <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)' }}>AI 봇에게 물어보세요!</p>

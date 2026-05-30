@@ -69,7 +69,7 @@ export default function MyPage() {
       <div style={{ background: 'white', marginTop: 8, padding: '20px 16px' }}>
         {/* 헤더 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 16 }}>
-          <span style={{ fontSize: 18 }}>🎯</span>
+          <Emoji char="🎯" size={18} />
           <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-primary)' }}>이번 달 목표</span>
         </div>
 
@@ -92,10 +92,10 @@ export default function MyPage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 14px', background: 'var(--primary-light)', borderRadius: 14, marginBottom: 20 }}>
           {selectedCoach
             ? <img src={selectedCoach.image} alt={selectedCoach.name} style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
-            : <span style={{ fontSize: 20, flexShrink: 0 }}>🤖</span>}
+            : <Emoji char="🤖" size={20} style={{ flexShrink: 0 }} />}
           <p style={{ fontSize: 13, color: 'var(--primary)', fontWeight: 600, lineHeight: 1.4 }}>
             {pct === 100
-              ? '이번 달 목표를 모두 달성했어요! 🎉'
+              ? '이번 달 목표를 모두 달성했어요!'
               : hasUrgent
               ? '잘 하고 있어요! 마감 임박 미션을 확인해볼까요?'
               : `${total - doneCount}개 미션이 남았어요. 조금만 더 해봐요!`}
@@ -105,7 +105,7 @@ export default function MyPage() {
         {/* 섹션 라벨 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
           <span style={{ fontSize: 12, fontWeight: 700, color: 'white', background: 'var(--primary)', borderRadius: 99, padding: '3px 10px' }}>{doneCount}/{total}</span>
-          <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)' }}>💰 절세 혜택</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 14, fontWeight: 700, color: 'var(--text-primary)' }}><Emoji char="💰" size={15} /> 절세 혜택</span>
         </div>
 
         {/* 미션 리스트 */}

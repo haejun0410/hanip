@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
+import Emoji from '../../components/Emoji/Emoji'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME, hanbeoteamRecommendationDetails } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME, kimgodsaengRecommendationDetails } from '../../data/kimgodsaeng'
@@ -296,7 +297,7 @@ export default function RecommendDetailPage() {
             fontSize: 50,
             boxShadow: '0 4px 16px rgba(59,111,232,0.12)',
           }}>
-            {item.emoji}
+            <Emoji char={item.emoji} size={48} />
           </div>
         </div>
       </div>
@@ -343,7 +344,7 @@ export default function RecommendDetailPage() {
               textAlign: 'center',
               border: '1px solid #EBF1FF',
             }}>
-              <div style={{ fontSize: 28, marginBottom: 8 }}>{t.icon}</div>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}><Emoji char={t.icon} size={28} /></div>
               <p style={{ fontSize: 12, fontWeight: 700, color: '#1A1A2E', marginBottom: 3, lineHeight: 1.3 }}>{t.label}</p>
               <p style={{ fontSize: 10, color: '#9CA3AF', lineHeight: 1.4 }}>{t.sub}</p>
             </div>

@@ -3,6 +3,7 @@ import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME } from '../../data/kimgodsaeng'
+import Emoji from '../../components/Emoji/Emoji'
 
 const settings = [
   { label: '공지사항', icon: '📢' },
@@ -27,7 +28,7 @@ export default function MyPageGuest() {
       <div style={{ background: 'white', padding: '32px 20px 24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 28 }}>
           <div style={{ width: 72, height: 72, background: 'var(--bg-gray)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 36, marginBottom: 14 }}>
-            👤
+            <Emoji char="👤" size={36} />
           </div>
           <p style={{ fontSize: 17, fontWeight: 700, marginBottom: 6 }}>로그인이 필요해요</p>
           <p style={{ fontSize: 13, color: 'var(--text-secondary)', textAlign: 'center', lineHeight: 1.6 }}>
@@ -41,7 +42,7 @@ export default function MyPageGuest() {
           <div style={{ display: 'flex', gap: 12 }}>
             {[{ icon: '💰', label: '절세 혜택', value: '??만원' }, { icon: '🏛️', label: '지원금', value: '??만원' }, { icon: '📋', label: '신청 현황', value: '?건' }].map((item, i) => (
               <div key={i} style={{ flex: 1, background: 'white', borderRadius: 10, padding: '10px 8px', textAlign: 'center', opacity: 0.7 }}>
-                <p style={{ fontSize: 18, marginBottom: 4 }}>{item.icon}</p>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}><Emoji char={item.icon} size={18} /></div>
                 <p style={{ fontSize: 11, color: 'var(--text-secondary)', marginBottom: 2 }}>{item.label}</p>
                 <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-tertiary)', filter: 'blur(4px)' }}>{item.value}</p>
               </div>
@@ -62,7 +63,7 @@ export default function MyPageGuest() {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {settings.map((s, i) => (
             <button key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 0', background: 'none', border: 'none', borderBottom: i < settings.length - 1 ? '1px solid var(--border)' : 'none', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}>
-              <span style={{ fontSize: 18, width: 24 }}>{s.icon}</span>
+              <span style={{ width: 24, display: 'flex' }}><Emoji char={s.icon} size={18} /></span>
               <span style={{ flex: 1, fontSize: 14, color: 'var(--text-primary)' }}>{s.label}</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>

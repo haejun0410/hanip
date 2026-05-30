@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
+import Emoji from '../../components/Emoji/Emoji'
 
 const samplePolicies = [
   { emoji: '🎓', title: '국가장학금 지원', tag: '교육', tagColor: 'badge-blue', deadline: 'D-30', org: '한국장학재단', desc: '대학 등록금 부담을 줄여주는 국가장학금' },
@@ -20,7 +21,7 @@ export default function PolicyGuestPage() {
         <h1 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>정책</h1>
         <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 14 }}>지금 신청 가능한 정부 지원금을 찾아보세요</p>
         <div style={{ background: 'var(--primary-light)', borderRadius: 16, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span style={{ fontSize: 24 }}>🔍</span>
+          <Emoji char="🔍" size={24} />
           <div style={{ flex: 1 }}>
             <p style={{ fontSize: 13, fontWeight: 700, color: 'var(--primary)', marginBottom: 2 }}>로그인하면 내 맞춤 정책만 보여드려요</p>
             <p style={{ fontSize: 12, color: 'var(--text-secondary)' }}>소득·가족 정보 기반으로 딱 맞는 혜택 추천</p>
@@ -38,7 +39,7 @@ export default function PolicyGuestPage() {
           {samplePolicies.slice(0, 2).map((p, i) => (
             <div key={i} style={{ background: 'white', borderRadius: 18, padding: '14px 16px', boxShadow: 'var(--shadow-sm)' }}>
               <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                <div style={{ width: 48, height: 48, background: 'var(--primary-light)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, flexShrink: 0 }}>{p.emoji}</div>
+                <div style={{ width: 48, height: 48, background: 'var(--primary-light)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Emoji char={p.emoji} size={24} /></div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
                     <span className={`badge ${p.tagColor}`}>{p.tag}</span>
@@ -60,7 +61,7 @@ export default function PolicyGuestPage() {
           {samplePolicies.slice(2).map((p, i) => (
             <div key={i} style={{ background: 'white', borderRadius: 18, padding: '14px 16px', boxShadow: 'var(--shadow-sm)' }}>
               <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                <div style={{ width: 48, height: 48, background: 'var(--primary-light)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, flexShrink: 0 }}>{p.emoji}</div>
+                <div style={{ width: 48, height: 48, background: 'var(--primary-light)', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Emoji char={p.emoji} size={24} /></div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', gap: 6, marginBottom: 4 }}>
                     <span className={`badge ${p.tagColor}`}>{p.tag}</span>

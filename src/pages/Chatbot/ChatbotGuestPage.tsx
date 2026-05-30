@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
+import Emoji from '../../components/Emoji/Emoji'
 
 const GUEST_LIMIT = 3
 
@@ -11,9 +12,9 @@ const sampleReplies = [
 ]
 
 const autoReply: Record<string, string> = {
-  '연말정산이 뭐야?': '연말정산은 1년 동안 납부한 세금을 정산해서 더 냈으면 돌려받고, 덜 냈으면 추가로 내는 절차예요. 매년 1~2월에 직장인이라면 꼭 해야 해요! 😊',
+  '연말정산이 뭐야?': '연말정산은 1년 동안 납부한 세금을 정산해서 더 냈으면 돌려받고, 덜 냈으면 추가로 내는 절차예요. 매년 1~2월에 직장인이라면 꼭 해야 해요!',
   '지금 신청 가능한 복지 있어?': '현재 청년내일저축계좌, 국가장학금, 에너지바우처 등이 신청 기간 중이에요. 로그인하면 내 상황에 맞는 혜택만 골라서 보여드릴게요!',
-  '월세 공제 받을 수 있어?': '무주택 세대주라면 월세의 15~17%를 세액공제 받을 수 있어요. 연간 최대 75만원까지 가능해요! 자세한 조건은 로그인 후 확인해보세요 🏠',
+  '월세 공제 받을 수 있어?': '무주택 세대주라면 월세의 15~17%를 세액공제 받을 수 있어요. 연간 최대 75만원까지 가능해요! 자세한 조건은 로그인 후 확인해보세요.',
 }
 
 type Message = { role: 'user' | 'ai'; text: string }
@@ -23,7 +24,7 @@ export default function ChatbotGuestPage() {
   useHeaderConfig({ title: 'AI 도우미', showBell: false })
 
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'ai', text: '안녕하세요! 세금·복지 관련 궁금한 점을 물어보세요 😊\n아래 질문을 눌러서 먼저 체험해보세요!' },
+    { role: 'ai', text: '안녕하세요! 세금·복지 관련 궁금한 점을 물어보세요.\n아래 질문을 눌러서 먼저 체험해보세요!' },
   ])
   const [input, setInput] = useState('')
   const [userCount, setUserCount] = useState(0)
@@ -46,7 +47,7 @@ export default function ChatbotGuestPage() {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* 체험 배너 */}
       <div style={{ background: 'var(--primary-light)', padding: '10px 16px', display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-        <span style={{ fontSize: 14 }}>✨</span>
+        <Emoji char="✨" size={14} />
         <p style={{ fontSize: 12, color: 'var(--primary)', fontWeight: 600 }}>
           {locked ? '체험이 끝났어요! 로그인하면 무제한으로 사용할 수 있어요' : `${GUEST_LIMIT - userCount}회 더 체험할 수 있어요`}
         </p>
@@ -58,7 +59,7 @@ export default function ChatbotGuestPage() {
           <div key={i} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start', alignItems: 'flex-end', gap: 8 }}>
             {msg.role === 'ai' && (
               <div style={{ width: 32, height: 32, background: 'var(--primary)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <span style={{ fontSize: 16 }}>🤖</span>
+                <Emoji char="🤖" size={16} color="white" />
               </div>
             )}
             <div style={{ maxWidth: '75%', padding: '12px 14px', borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px', background: msg.role === 'user' ? 'var(--primary)' : 'white', color: msg.role === 'user' ? 'white' : 'var(--text-primary)', fontSize: 14, lineHeight: 1.6, boxShadow: 'var(--shadow-sm)', whiteSpace: 'pre-line' }}>
@@ -70,7 +71,7 @@ export default function ChatbotGuestPage() {
         {/* 빠른 질문 (첫 화면) */}
         {userCount === 0 && (
           <div style={{ background: 'white', borderRadius: 20, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-            <p style={{ padding: '12px 16px', fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '1px solid var(--border)' }}>💡 이런 것들을 물어볼 수 있어요</p>
+            <p style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '12px 16px', fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)', borderBottom: '1px solid var(--border)' }}><Emoji char="💡" size={15} /> 이런 것들을 물어볼 수 있어요</p>
             {sampleReplies.map((reply, i) => (
               <button key={i} onClick={() => sendMessage(reply)} style={{ width: '100%', padding: '13px 16px', background: 'white', border: 'none', borderBottom: i < sampleReplies.length - 1 ? '1px solid var(--border)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, textAlign: 'left', color: 'var(--text-primary)' }}>
                 <span>{reply}</span>
@@ -83,7 +84,7 @@ export default function ChatbotGuestPage() {
         {/* 잠금 메시지 */}
         {locked && (
           <div style={{ background: 'white', borderRadius: 20, padding: '24px', textAlign: 'center', boxShadow: '0 8px 32px rgba(59,111,232,0.15)', border: '1.5px solid var(--border)', margin: '8px 0' }}>
-            <div style={{ fontSize: 36, marginBottom: 12 }}>🔒</div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}><Emoji char="🔒" size={36} /></div>
             <p style={{ fontSize: 16, fontWeight: 700, marginBottom: 8 }}>체험이 끝났어요!</p>
             <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 20 }}>
               로그인하면 AI 도우미를<br />제한 없이 사용할 수 있어요

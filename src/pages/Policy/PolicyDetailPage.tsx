@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
+import Emoji from '../../components/Emoji/Emoji'
 import { getPolicyById } from './policyData'
 
 type Tab = 'info' | 'apply'
@@ -68,7 +69,7 @@ export default function PolicyDetailPage() {
             <button type="button">신청함</button>
           </div>
           <div className="policy-detail-heading">
-            <div className="policy-detail-icon">{policy.icon}</div>
+            <div className="policy-detail-icon"><Emoji char={policy.icon} size={32} /></div>
           </div>
         </div>
       </section>

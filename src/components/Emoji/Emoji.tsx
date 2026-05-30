@@ -5,6 +5,11 @@ import {
   Target, Bot, Lock, PartyPopper, BarChart3, Link, Receipt,
   AlertTriangle, CheckCircle2, Key, MapPin, Sparkles, Building,
   ShoppingBag, Wallet, PiggyBank, HeartPulse, BookOpen, Star,
+  Search, Zap, Compass, Newspaper, Megaphone, Info, Headphones,
+  UserRound, ClipboardList, Bell, MessageCircle, Smartphone,
+  IdCard, Hash, Leaf, CircleHelp, UsersRound, Droplets, Bath,
+  School, Book, Backpack, Pill, Bed, Car, Lightbulb,
+  ScanLine,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -48,6 +53,46 @@ const EMOJI_ICON_MAP: Record<string, LucideIcon> = {
   '❤️': HeartPulse,
   '📚': BookOpen,
   '⭐': Star,
+  '🔍': Search,
+  '⚡': Zap,
+  '🧭': Compass,
+  '📰': Newspaper,
+  '📢': Megaphone,
+  'ℹ️': Info,
+  '🎧': Headphones,
+  '👤': UserRound,
+  '📋': ClipboardList,
+  '🔔': Bell,
+  '💬': MessageCircle,
+  '📱': Smartphone,
+  '🪪': IdCard,
+  '🔢': Hash,
+  '🌿': Leaf,
+  '👨‍👩‍👧': UsersRound,
+  '🧑‍🤝‍🧑': UsersRound,
+  '💑': UsersRound,
+  '👴': UserRound,
+  '🙋': UserRound,
+  '💧': Droplets,
+  '🧴': Bath,
+  '🏫': School,
+  '📖': Book,
+  '🎒': Backpack,
+  '💊': Pill,
+  '🏨': Bed,
+  '🚗': Car,
+  '🚨': AlertTriangle,
+  '👧': Baby,
+  '⛪': Building,
+  '👩': UserRound,
+  '🏙️': Building2,
+  '🏧': CreditCard,
+  '💡': Lightbulb,
+  '🔒': Lock,
+  '📝': FileText,
+  '🟡': CircleHelp,
+  '🟢': CircleHelp,
+  '⊞': ScanLine,
 }
 
 interface EmojiProps {
@@ -59,6 +104,6 @@ interface EmojiProps {
 
 export default function Emoji({ char, size = 22, color = 'var(--primary)', style }: EmojiProps) {
   const IconComponent = EMOJI_ICON_MAP[char]
-  if (!IconComponent) return <span style={{ fontSize: size * 0.9, ...style }}>{char}</span>
+  if (!IconComponent) return <CircleHelp size={size} color={color} strokeWidth={1.8} style={style} />
   return <IconComponent size={size} color={color} strokeWidth={1.8} style={style} />
 }
