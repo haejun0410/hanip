@@ -1,5 +1,6 @@
 import type { PolicyDetail } from '../pages/Policy/policyData'
 import type { AiBenefit } from '../types/aiBenefit'
+import { kimgodsaengAdditionalAiBenefits } from './additionalBenefitChats'
 
 export const KIMGODSAENG_NAME = '김갓생'
 
@@ -205,6 +206,7 @@ export const kimgodsaengNotices = {
 }
 
 export const kimgodsaengAiBenefits: AiBenefit[] = [
+  ...kimgodsaengAdditionalAiBenefits,
   {
     id: 'rent-tax-ai',
     type: 'tax',

@@ -1,5 +1,6 @@
 import type { PolicyDetail } from '../pages/Policy/policyData'
 import type { AiBenefit } from '../types/aiBenefit'
+import { hanbeoteamAdditionalAiBenefits } from './additionalBenefitChats'
 
 export const HANBEOTEAM_NAME = '한버팀'
 
@@ -187,6 +188,7 @@ export const hanbeoteamNotices = {
 }
 
 export const hanbeoteamAiBenefits: AiBenefit[] = [
+  ...hanbeoteamAdditionalAiBenefits,
   {
     id: 'eitc-ai',
     type: 'tax',
@@ -228,6 +230,20 @@ export const hanbeoteamAiBenefits: AiBenefit[] = [
     amountLabel: '소득 유형별 차등 지원',
     aiReason: '만 12세 이하 자녀를 양육 중인 가정으로 확인됐어요. 돌봄 공백과 국민행복카드 준비 여부를 확인해 주세요.',
     conditions: ['만 12세 이하 자녀가 있나요?', '맞벌이·한부모 등으로 돌봄 공백이 있나요?', '국민행복카드를 보유하고 있나요?'],
+  },
+  {
+    id: 'baby-supplies-ai',
+    type: 'hidden',
+    icon: '👶',
+    iconBg: '#FCE7F3',
+    title: '육아용품 반복 결제',
+    subtitle: '자녀 관련 지원금 확인 후보',
+    statusLabel: '생활 변화 감지',
+    statusColor: '#D97706',
+    amount: 0,
+    amountLabel: '확인 가능한 지원금',
+    aiReason: '최근 기저귀·육아용품 결제가 자주 보여요. 자녀가 생기셨거나 양육 중인 자녀가 있다면 받을 수 있는 지원을 확인해볼 수 있어요.',
+    conditions: ['최근 출생하거나 양육 중인 자녀가 있나요?', '현재 한부모 가정에 해당하나요?', '아동양육비 지원 신청 여부를 확인하셨나요?'],
   },
   {
     id: 'activity-ai',

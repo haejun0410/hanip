@@ -1,73 +1,37 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import Emoji from '../../components/Emoji/Emoji'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME, hanbeoteamAiBenefits } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME, kimgodsaengAiBenefits } from '../../data/kimgodsaeng'
-import type { AiBenefitType } from '../../types/aiBenefit'
-
-const TYPE_LABEL: Record<AiBenefitType, string> = {
-  tax: '절세 추천',
-  policy: '정책 추천',
-  hidden: '숨은 공제',
-}
-
-const TYPE_BADGE: Record<AiBenefitType, string> = {
-  tax: 'badge-blue',
-  policy: 'badge-green',
-  hidden: 'badge-orange',
-}
-
-const FILTERS: [AiBenefitType | 'all', string][] = [
-  ['all', '전체'],
-  ['tax', '절세'],
-  ['policy', '정책'],
-  ['hidden', '숨은 공제'],
-]
 
 export default function AiBenefitsPage() {
   const navigate = useNavigate()
   const { userName } = useAuth()
-  useHeaderConfig({ title: 'AI가 찾은 혜택', showBack: true })
+  useHeaderConfig({ title: 'AI 감지 알림', showBack: true })
 
-  const benefits = userName === HANBEOTEAM_NAME ? hanbeoteamAiBenefits
+  const allBenefits = userName === HANBEOTEAM_NAME ? hanbeoteamAiBenefits
     : userName === KIMGODSAENG_NAME ? kimgodsaengAiBenefits
     : kimgodsaengAiBenefits
-
-  const [filter, setFilter] = useState<AiBenefitType | 'all'>('all')
-  const filtered = filter === 'all' ? benefits : benefits.filter(b => b.type === filter)
+  const benefits = allBenefits.filter(benefit => benefit.type === 'hidden')
 
   const fmtAmount = (n: number) => n === 0 ? '소득별 차등' : `${n.toLocaleString()}원`
 
   return (
     <div style={{ background: 'var(--bg-default)', minHeight: '100%', paddingBottom: 24 }}>
 
-      {/* 필터 칩 */}
-      <div style={{ background: 'white', padding: '12px 16px', display: 'flex', gap: 8, borderBottom: '1px solid var(--border)' }}>
-        {FILTERS.map(([key, label]) => {
-          const count = key === 'all' ? benefits.length : benefits.filter(b => b.type === key).length
-          const active = filter === key
-          return (
-            <button
-              key={key}
-              onClick={() => setFilter(key)}
-              style={{
-                padding: '7px 16px', borderRadius: 99, border: 'none', fontFamily: 'inherit',
-                fontSize: 13, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap',
-                background: active ? 'var(--primary)' : 'var(--bg-gray)',
-                color: active ? 'white' : 'var(--text-secondary)',
-              }}
-            >
-              {label} {key === 'all' ? count : ''}
-            </button>
-          )
-        })}
+      <div style={{ background: 'white', padding: '16px', borderBottom: '1px solid var(--border)' }}>
+        <p style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 5 }}>
+          최근 금융 활동에서 발견했어요
+        </p>
+        <p style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+          카드·계좌 내역을 바탕으로 놓치기 쉬운 혜택 후보를 먼저 알려드려요.
+        </p>
       </div>
 
       {/* 카드 리스트 */}
       <div style={{ padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-        {filtered.map(benefit => (
+        {benefits.map(benefit => (
           <div
             key={benefit.id}
             onClick={() => navigate(`/ai-benefits/${benefit.id}`)}
@@ -77,7 +41,7 @@ export default function AiBenefitsPage() {
               padding: '16px',
               boxShadow: '0 1px 6px rgba(0,0,0,0.06)',
               cursor: 'pointer',
-              border: benefit.type === 'hidden' ? '1.5px solid #F59E0B44' : '1.5px solid transparent',
+              border: '1.5px solid #F59E0B44',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
@@ -85,8 +49,8 @@ export default function AiBenefitsPage() {
                 <Emoji char={benefit.icon} size={22} />
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <span className={`badge ${TYPE_BADGE[benefit.type]}`} style={{ fontSize: 10, marginBottom: 6, display: 'inline-block' }}>
-                  {TYPE_LABEL[benefit.type]}
+                <span className="badge badge-orange" style={{ fontSize: 10, marginBottom: 6, display: 'inline-block' }}>
+                  마이데이터 감지
                 </span>
                 <p style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4, lineHeight: 1.3 }}>{benefit.title}</p>
                 <p style={{ fontSize: 12, fontWeight: 600, color: benefit.statusColor }}>{benefit.statusLabel}</p>
@@ -105,7 +69,7 @@ export default function AiBenefitsPage() {
       </div>
 
       <p style={{ textAlign: 'center', fontSize: 11, color: 'var(--text-tertiary)', padding: '4px 16px 0' }}>
-        * AI가 분석한 데이터를 기반으로 추천합니다.
+        * 연결된 마이데이터를 바탕으로 AI가 확인이 필요한 후보를 알려드립니다.
       </p>
     </div>
   )

@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useHeaderConfig } from '../../components/Header/useHeaderConfig'
 import Emoji from '../../components/Emoji/Emoji'
 import { getPolicyById } from './policyData'
+import { getPolicyChatId } from '../../data/benefitChatLinks'
 
 type Tab = 'info' | 'apply'
 
@@ -26,8 +27,10 @@ function ChevronDown() {
 }
 
 export default function PolicyDetailPage() {
+  const navigate = useNavigate()
   const { id } = useParams()
   const policy = getPolicyById(id)
+  const chatId = getPolicyChatId(id)
   const [activeTab, setActiveTab] = useState<Tab>('info')
   const [expandedRow, setExpandedRow] = useState<string | null>(null)
 
@@ -73,6 +76,18 @@ export default function PolicyDetailPage() {
           </div>
         </div>
       </section>
+
+      {chatId && (
+        <section style={{ background: 'white', padding: '0 16px 20px' }}>
+          <button
+            className="btn-primary"
+            type="button"
+            onClick={() => navigate(`/ai-benefits/${chatId}/chat`)}
+          >
+            AI와 내 조건 확인하기
+          </button>
+        </section>
+      )}
 
       <section className="policy-detail-info-card">
         <div className="policy-detail-tabs">

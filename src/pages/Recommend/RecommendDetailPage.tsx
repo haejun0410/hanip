@@ -4,6 +4,7 @@ import Emoji from '../../components/Emoji/Emoji'
 import { useAuth } from '../../context/AuthContext'
 import { HANBEOTEAM_NAME, hanbeoteamRecommendationDetails } from '../../data/hanbeoteam'
 import { KIMGODSAENG_NAME, kimgodsaengRecommendationDetails } from '../../data/kimgodsaeng'
+import { getRecommendationChatId } from '../../data/benefitChatLinks'
 
 // ── 반원 게이지 미터 ──────────────────────────────────────
 function GaugeMeter({ current, max }: { current: number; max: number }) {
@@ -270,6 +271,7 @@ export default function RecommendDetailPage() {
     : userName === KIMGODSAENG_NAME && kimgodsaengItem
     ? kimgodsaengItem
     : data[id] ?? data.glasses
+  const chatId = getRecommendationChatId(id)
   useHeaderConfig({ showBack: true, showBell: true, badgeCount: 2 })
 
   return (
@@ -402,27 +404,38 @@ export default function RecommendDetailPage() {
       </div>
 
       {/* ── 하단 버튼 ── */}
-      <div style={{ padding: '4px 16px 36px', display: 'flex', gap: 10 }}>
-        <button
-          className="btn-secondary"
-          style={{ flex: 1, height: 50, fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M14 2v6h6M12 18v-6M9 15h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          영수증 등록하기
-        </button>
-        <button
-          className="btn-primary"
-          style={{ flex: 1, height: 50, fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}
-          onClick={() => navigate(-1)}
-        >
-          연말정산 미리보기
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path d="M9 18l6-6-6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
+      <div style={{ padding: '4px 16px 36px' }}>
+        {chatId && (
+          <button
+            className="btn-primary"
+            style={{ width: '100%', height: 52, fontSize: 15, marginBottom: 10 }}
+            onClick={() => navigate(`/ai-benefits/${chatId}/chat`)}
+          >
+            AI와 내 조건 확인하기
+          </button>
+        )}
+        <div style={{ display: 'flex', gap: 10 }}>
+          <button
+            className="btn-secondary"
+            style={{ flex: 1, height: 50, fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M14 2v6h6M12 18v-6M9 15h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            영수증 등록하기
+          </button>
+          <button
+            className="btn-secondary"
+            style={{ flex: 1, height: 50, fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}
+            onClick={() => navigate(-1)}
+          >
+            연말정산 미리보기
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -81,7 +81,7 @@ export default function HomePage() {
         />
 
         <button
-          onClick={() => navigate('/recommend')}
+          onClick={() => navigate('/ai-benefits')}
           style={{ position: 'relative', zIndex: 1, width: '100%', background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.25)', borderRadius: 12, padding: '11px 0', color: 'white', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
         >
           AI가 찾은 혜택 보기 →
@@ -132,7 +132,7 @@ export default function HomePage() {
           {[
             { icon: TrendingUp, label: '절세 추천', desc: '연말정산·세액공제 중심', route: '/recommend', bg: '#F0FBF4', iconBg: '#D1FAE5', color: '#16A34A' },
             { icon: Building, label: '정책 추천', desc: '정부/지자체 지원사업 중심', route: '/policy', bg: '#EFF6FF', iconBg: '#DBEAFE', color: '#2563EB' },
-            { icon: Sparkles, label: '숨은 공제 탐지', desc: '카드·계좌 거래 기반 공제 후보', route: '/ai-benefits', bg: '#FAF5FF', iconBg: '#EDE9FE', color: '#7C3AED' },
+            { icon: Sparkles, label: '숨은 공제 탐지', desc: '카드·계좌 기반 AI 감지 알림', route: '/ai-benefits', bg: '#FAF5FF', iconBg: '#EDE9FE', color: '#7C3AED' },
           ].map(({ icon: Icon, label, desc, route, bg, iconBg, color }) => (
             <button
               key={label}

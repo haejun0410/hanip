@@ -1,4 +1,5 @@
 import type { CoachId } from '../context/ChatbotCoachContext'
+import { additionalBenefitConversations } from './additionalBenefitChats'
 
 export type CoachVariant = Record<CoachId, string>
 export type LocalizedText = string | CoachVariant
@@ -38,6 +39,7 @@ export function resolveText(text: LocalizedText, coachId: CoachId | null): strin
 // ─────────────────────────────────────────────────────────────────────
 
 export const benefitConversations: Record<string, BenefitConversation> = {
+  ...additionalBenefitConversations,
 
   'rent-tax-ai': {
     intro: {
@@ -195,7 +197,7 @@ export const benefitConversations: Record<string, BenefitConversation> = {
         strategy: '나이·별도 거주·무주택·소득 요건 확인 완료. 복지로에서 신청하세요.',
       },
       actions: [
-        { label: '신청하러 가기', action: 'apply' },
+        { label: '신청하러 가기', action: 'policy' },
         { label: '다음 혜택 보기', action: 'next' },
       ],
     },
@@ -630,7 +632,7 @@ export const benefitConversations: Record<string, BenefitConversation> = {
         strategy: '아동 연령·돌봄 공백·결제수단 확인 완료. 서비스 신청을 진행하세요.',
       },
       actions: [
-        { label: '신청하러 가기', action: 'apply' },
+        { label: '신청하러 가기', action: 'policy' },
         { label: '다음 혜택 보기', action: 'next' },
       ],
     },
@@ -644,6 +646,89 @@ export const benefitConversations: Record<string, BenefitConversation> = {
         easy:     '자녀 연령과 돌봄 필요 여부를 확인하고, 국민행복카드를 준비해주세요.',
         summary:  '자녀 연령·돌봄 공백·국민행복카드 준비 여부를 확인해주세요.',
         strategy: '확인되지 않은 신청 조건을 준비한 뒤 재검토하세요.',
+      },
+    },
+  },
+
+  'baby-supplies-ai': {
+    intro: {
+      easy:     '최근 기저귀나 육아용품 결제가 자주 보여요. 자녀가 생기셨나요? 받을 수 있는 지원을 같이 확인해봐요.',
+      summary:  '최근 육아용품 결제가 반복되어 자녀 관련 지원 가능성을 확인할게요.',
+      strategy: '육아용품 반복 결제를 기반으로 자녀 양육 지원 후보를 검토할게요.',
+    },
+    questions: [
+      {
+        message: '최근 출생했거나 현재 양육 중인 자녀가 있나요?',
+        options: [
+          { label: '네, 있어요', isPositive: true },
+          {
+            label: '아니요',
+            isPositive: false,
+            followUp: {
+              easy:     '알겠어요. 이번 결제는 자녀 양육과 관련 없는 내역으로 정리할게요.',
+              summary:  '자녀 양육과 관련 없는 결제로 확인했어요.',
+              strategy: '자녀 양육 관련 결제가 아니므로 지원 후보에서 제외합니다.',
+            },
+          },
+        ],
+      },
+      {
+        message: '현재 한부모 가정에 해당하나요?',
+        options: [
+          { label: '네, 해당해요', isPositive: true },
+          {
+            label: '아니요',
+            isPositive: false,
+            followUp: {
+              easy:     '괜찮아요. 한부모 지원 외에도 받을 수 있는 육아 지원을 확인해볼게요.',
+              summary:  '일반 자녀 양육 지원을 기준으로 다시 확인해볼게요.',
+              strategy: '한부모 전용 지원 외 일반 양육 지원 검토가 필요합니다.',
+            },
+          },
+        ],
+      },
+      {
+        message: '한부모가족 아동양육비 지원을 이미 신청하셨나요?',
+        options: [
+          { label: '아직 신청하지 않았어요', isPositive: true },
+          {
+            label: '이미 신청했어요',
+            isPositive: true,
+            followUp: {
+              easy:     '좋아요. 지급 내역과 추가로 받을 수 있는 지원을 함께 확인해볼게요.',
+              summary:  '기존 신청 내역과 추가 지원 가능성을 함께 확인할게요.',
+              strategy: '기존 신청 상태를 반영해 추가 지원 후보를 검토합니다.',
+            },
+          },
+        ],
+      },
+    ],
+    positiveResult: {
+      title: {
+        easy:     '자녀 지원을 더 확인해볼 수 있어요!',
+        summary:  '자녀 관련 지원 후보가 있어요',
+        strategy: '자녀 양육 지원 후보 확인 완료',
+      },
+      subtitle: {
+        easy:     '한부모가족 아동양육비와 아이돌봄서비스를 함께 살펴보면 좋아요.',
+        summary:  '아동양육비와 아이돌봄서비스 신청 여부를 확인해보세요.',
+        strategy: '아동양육비 및 돌봄서비스 신청 상태 확인을 권장합니다.',
+      },
+      actions: [
+        { label: '지원 정책 보러 가기', action: 'policy' },
+        { label: '다음 알림 보기', action: 'next' },
+      ],
+    },
+    negativeResult: {
+      title: {
+        easy:     '이번 결제는 제외할게요',
+        summary:  '자녀 지원 후보에서 제외했어요',
+        strategy: '지원 후보 제외',
+      },
+      subtitle: {
+        easy:     '다른 카드·계좌 내역에서 놓친 혜택이 있는지 계속 살펴볼게요.',
+        summary:  '다른 금융 활동에서 확인할 후보를 계속 찾아볼게요.',
+        strategy: '비관련 결제로 분류하고 다른 감지 후보를 검토합니다.',
       },
     },
   },

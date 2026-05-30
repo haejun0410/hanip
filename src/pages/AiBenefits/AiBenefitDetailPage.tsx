@@ -28,7 +28,7 @@ export default function AiBenefitDetailPage() {
   const navigate = useNavigate()
   const { id } = useParams()
   const { userName } = useAuth()
-  useHeaderConfig({ title: '혜택 상세', showBack: true })
+  useHeaderConfig({ title: 'AI 감지 알림', showBack: true })
 
   const benefits = userName === HANBEOTEAM_NAME ? hanbeoteamAiBenefits
     : userName === KIMGODSAENG_NAME ? kimgodsaengAiBenefits

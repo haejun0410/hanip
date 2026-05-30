@@ -169,6 +169,7 @@ export default function BenefitChatPage() {
   const handleAction = (action: string) => {
     if (action === 'next' && nextId) navigate(`/ai-benefits/${nextId}/chat`)
     else if (action === 'apply') navigate('/recommend')
+    else if (action === 'policy') navigate('/policy')
     else if (action === 'receipt' || action === 'transfer') navigate('/chatbot')
     else navigate('/ai-benefits')
   }
