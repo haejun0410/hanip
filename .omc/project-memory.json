@@ -148,8 +148,8 @@
   "hotPaths": [
     {
       "path": "src/index.css",
-      "accessCount": 61,
-      "lastAccessed": 1780111982619,
+      "accessCount": 74,
+      "lastAccessed": 1780112375537,
       "type": "file"
     },
     {
@@ -207,6 +207,12 @@
       "type": "file"
     },
     {
+      "path": "src/context/ChatbotCoachContext.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1780112368628,
+      "type": "file"
+    },
+    {
       "path": "CLAUDE.md",
       "accessCount": 2,
       "lastAccessed": 1780062065235,
@@ -216,6 +222,12 @@
       "path": "src/pages/MyPage/ProfileEditPage.tsx",
       "accessCount": 2,
       "lastAccessed": 1780066669754,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/Chatbot/ChatbotInitPage.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1780112311307,
       "type": "file"
     },
     {
@@ -240,12 +252,6 @@
       "path": "src/context/AuthContext.tsx",
       "accessCount": 1,
       "lastAccessed": 1780061980966,
-      "type": "file"
-    },
-    {
-      "path": "src/context/ChatbotCoachContext.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780061981176,
       "type": "file"
     },
     {
@@ -276,12 +282,6 @@
       "path": "src/pages/Login/LoginFlow.tsx",
       "accessCount": 1,
       "lastAccessed": 1780066579911,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/Chatbot/ChatbotInitPage.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780067253835,
       "type": "file"
     },
     {

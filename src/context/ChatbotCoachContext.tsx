@@ -56,7 +56,7 @@ export const coachProfiles: CoachProfile[] = [
     id: 'strategy',
     badge: '공부형',
     badgeColor: '#3B6FE8',
-    name: '약간의 정보를 알고 있고, 배울 의지가 있는 사람',
+    name: '약간의 정보를 알고 있고,\n배울 의지가 있는 사람',
     level: '성인 수준',
     description: '절세 전략까지 제대로 알고 싶어요.',
     promise: '분석과 전략으로 최대 혜택을 도와드릴게요!',

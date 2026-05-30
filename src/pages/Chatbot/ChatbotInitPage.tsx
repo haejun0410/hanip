@@ -63,15 +63,7 @@ export default function ChatbotInitPage() {
         })}
       </div>
 
-      <div className="coach-select-note">
-        <div>🔒</div>
-        <div>
-          <strong>선택은 언제든 변경할 수 있어요</strong>
-          <p>마이페이지 &gt; 설정 및 정보에서 변경 가능합니다.</p>
-        </div>
-      </div>
-
-      <div className="coach-select-action">
+<div className="coach-select-action">
         <button className="btn-primary" disabled={!selected} onClick={startChat} style={{ opacity: selected ? 1 : 0.5 }}>
           선택하고 시작하기
         </button>
