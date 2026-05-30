@@ -165,21 +165,33 @@
       "type": "file"
     },
     {
+      "path": "src/pages/Chatbot/ChatbotPage.tsx",
+      "accessCount": 11,
+      "lastAccessed": 1780130062478,
+      "type": "file"
+    },
+    {
       "path": "src/components/Emoji/Emoji.tsx",
       "accessCount": 7,
       "lastAccessed": 1780068701704,
       "type": "file"
     },
     {
-      "path": "src/App.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1780066518223,
+      "path": "src/data/kimgodsaeng.ts",
+      "accessCount": 7,
+      "lastAccessed": 1780129960186,
       "type": "file"
     },
     {
-      "path": "src/pages/Chatbot/ChatbotPage.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1780067874556,
+      "path": "src/data/hanbeoteam.ts",
+      "accessCount": 6,
+      "lastAccessed": 1780129944526,
+      "type": "file"
+    },
+    {
+      "path": "src/App.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1780130032856,
       "type": "file"
     },
     {
@@ -192,18 +204,6 @@
       "path": "src/pages/Policy/PolicyPage.tsx",
       "accessCount": 4,
       "lastAccessed": 1780068209096,
-      "type": "file"
-    },
-    {
-      "path": "src/data/kimgodsaeng.ts",
-      "accessCount": 4,
-      "lastAccessed": 1780070047964,
-      "type": "file"
-    },
-    {
-      "path": "src/data/hanbeoteam.ts",
-      "accessCount": 3,
-      "lastAccessed": 1780069838551,
       "type": "file"
     },
     {
@@ -288,6 +288,30 @@
       "path": "src/hooks/useMissions.ts",
       "accessCount": 1,
       "lastAccessed": 1780067598915,
+      "type": "file"
+    },
+    {
+      "path": "src/types/aiBenefit.ts",
+      "accessCount": 1,
+      "lastAccessed": 1780129902135,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/AiBenefits/AiBenefitsPage.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780129985379,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/AiBenefits/AiBenefitDetailPage.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780130004554,
+      "type": "file"
+    },
+    {
+      "path": "src/components/BottomNav/BottomNav.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1780130035338,
       "type": "file"
     }
   ],

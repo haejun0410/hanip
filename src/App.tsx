@@ -24,6 +24,8 @@ import PolicyDetailPage from './pages/Policy/PolicyDetailPage'
 import MyPage from './pages/MyPage/MyPage'
 import MyPageGuest from './pages/MyPage/MyPageGuest'
 import ProfileEditPage from './pages/MyPage/ProfileEditPage'
+import AiBenefitsPage from './pages/AiBenefits/AiBenefitsPage'
+import AiBenefitDetailPage from './pages/AiBenefits/AiBenefitDetailPage'
 import NoticePage from './pages/Notice/NoticePage'
 
 function AppShell() {
@@ -52,6 +54,8 @@ function AppShell() {
           <Route path="/mypage"      element={isLoggedIn ? <MyPage />         : <MyPageGuest />} />
           <Route path="/mypage/edit" element={isLoggedIn ? <ProfileEditPage /> : <MyPageGuest />} />
           <Route path="/notice"      element={isLoggedIn ? <NoticePage />     : <MyPageGuest />} />
+          <Route path="/ai-benefits"     element={isLoggedIn ? <AiBenefitsPage />      : <MyPageGuest />} />
+          <Route path="/ai-benefits/:id" element={isLoggedIn ? <AiBenefitDetailPage /> : <MyPageGuest />} />
         </Routes>
       </div>
       <BottomNav />

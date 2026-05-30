@@ -419,6 +419,22 @@ export default function ChatbotPage() {
 
       </div>
 
+      {/* ── AI 혜택 버튼 ── */}
+      <div style={{ background: 'transparent', padding: '10px 16px', flexShrink: 0, display: 'flex', justifyContent: 'center' }}>
+        <button
+          onClick={() => navigate('/ai-benefits')}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--primary-light)', border: '1.5px solid var(--primary)', borderRadius: 99, padding: '8px 20px', cursor: 'pointer', fontFamily: 'inherit' }}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--primary)' }}>AI가 찾은 혜택 보기</span>
+          <span style={{ width: 18, height: 18, borderRadius: '50%', background: 'var(--primary)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </span>
+        </button>
+      </div>
+
       {/* ── 빠른 질문 패널 ── */}
       <div style={{ background: 'white', borderTop: '1px solid var(--border)', flexShrink: 0 }}>
         <button

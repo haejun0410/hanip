@@ -1,4 +1,5 @@
 import type { PolicyDetail } from '../pages/Policy/policyData'
+import type { AiBenefit } from '../types/aiBenefit'
 
 export const HANBEOTEAM_NAME = '한버팀'
 
@@ -184,3 +185,62 @@ export const hanbeoteamNotices = {
     { emoji: '📄', text: '정부24 가족관계 정보 스크래핑이 완료되었습니다.', date: '1일 전' },
   ],
 }
+
+export const hanbeoteamAiBenefits: AiBenefit[] = [
+  {
+    id: 'eitc-ai',
+    type: 'tax',
+    icon: '💰',
+    iconBg: '#FEF3C7',
+    title: '근로·자녀장려금',
+    subtitle: '소득·가족요건 충족 가능성 높음',
+    statusLabel: '가능성 높음',
+    statusColor: '#16A34A',
+    amount: 2400000,
+    amountLabel: '예상 수령 금액',
+    aiReason: '연소득 2,600만원, 자녀 1명 한부모 가구 조건을 분석했어요. 5월 정기 신청 기간 내 신청이 가능합니다.',
+    conditions: ['연소득 2,600만원 이하인가요?', '부양자녀가 있는 가구인가요?', '재산 합계 2억원 미만인가요?'],
+  },
+  {
+    id: 'single-parent-ai',
+    type: 'tax',
+    icon: '👩‍👧',
+    iconBg: '#DBEAFE',
+    title: '한부모 소득공제',
+    subtitle: '부녀자 공제 대신 한부모 공제 적용 가능',
+    statusLabel: '적용 가능',
+    statusColor: '#2563EB',
+    amount: 1000000,
+    amountLabel: '추가 공제 금액',
+    aiReason: '가족관계 데이터에서 한부모 가정 조건이 확인됐어요. 부녀자 공제보다 한부모 공제가 유리합니다.',
+    conditions: ['배우자가 없는 세대주인가요?', '기본공제 대상 자녀가 있나요?', '연말정산 시 적용 여부를 확인하셨나요?'],
+  },
+  {
+    id: 'care-ai',
+    type: 'policy',
+    icon: '👶',
+    iconBg: '#D1FAE5',
+    title: '아이돌봄서비스',
+    subtitle: '한부모 가정 우선 지원 대상',
+    statusLabel: '신청 가능',
+    statusColor: '#16A34A',
+    amount: 0,
+    amountLabel: '소득 유형별 차등 지원',
+    aiReason: '한부모 가정 조건으로 아이돌봄서비스 우선 신청 대상입니다. 정부지원 비율이 자동 산정돼요.',
+    conditions: ['만 12세 이하 자녀가 있나요?', '한부모가족 증명서를 발급받으셨나요?', '국민행복카드를 보유하고 있나요?'],
+  },
+  {
+    id: 'activity-ai',
+    type: 'hidden',
+    icon: '🎨',
+    iconBg: '#EDE9FE',
+    title: '어린이집 특별활동비 결제',
+    subtitle: '교육비 세액공제 후보',
+    statusLabel: '누락 가능성',
+    statusColor: '#D97706',
+    amount: 300000,
+    amountLabel: '공제 가능 금액',
+    aiReason: '카드 내역에서 어린이집 특별활동비 결제가 감지됐어요. 연말정산 간소화에 반영되지 않는 경우가 있습니다.',
+    conditions: ['취학 전 아동 교육비인가요?', '영수증이 있나요?', '간소화 서비스에서 확인되지 않았나요?'],
+  },
+]

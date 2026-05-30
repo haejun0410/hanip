@@ -7,6 +7,7 @@ import { KIMGODSAENG_NAME, kimgodsaengHome } from '../../data/kimgodsaeng'
 import { useMissions } from '../../hooks/useMissions'
 import Emoji from '../../components/Emoji/Emoji'
 import { Bot, TrendingUp, MessageCircle, Building, Sparkles } from 'lucide-react'
+import heroWallet from '../../assets/hero-wallet-blue.png'
 
 
 export default function HomePage() {
@@ -53,7 +54,7 @@ export default function HomePage() {
         </div>
 
         {/* 중앙 레이아웃: 코치 | 텍스트 | 이미지 */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14, position: 'relative', zIndex: 1 }}>
           {/* 코치 아바타 - 얼굴 줌인 */}
           <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(255,255,255,0.15)', flexShrink: 0, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {selectedCoach
@@ -62,7 +63,7 @@ export default function HomePage() {
           </div>
 
           {/* 텍스트 */}
-          <div style={{ flex: 1, paddingLeft: 8 }}>
+          <div style={{ flex: 1, paddingLeft: 8, paddingRight: 68 }}>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, marginBottom: 2 }}>혜택 가능성</p>
             <p style={{ color: 'white', fontSize: 22, fontWeight: 800, lineHeight: 1.1, marginBottom: 6 }}>
               {pendingCount}건
@@ -73,9 +74,15 @@ export default function HomePage() {
 
         </div>
 
+        <img
+          src={heroWallet}
+          alt=""
+          style={{ position: 'absolute', top: 36, right: -4, width: 126, height: 'auto', pointerEvents: 'none' }}
+        />
+
         <button
           onClick={() => navigate('/recommend')}
-          style={{ width: '100%', background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.25)', borderRadius: 12, padding: '11px 0', color: 'white', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
+          style={{ position: 'relative', zIndex: 1, width: '100%', background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.25)', borderRadius: 12, padding: '11px 0', color: 'white', fontSize: 14, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
         >
           AI가 찾은 혜택 보기 →
         </button>

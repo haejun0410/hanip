@@ -47,6 +47,7 @@ export default function BottomNav() {
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/'
+    if (path === '/chatbot') return location.pathname.startsWith('/chatbot') || location.pathname.startsWith('/ai-benefits')
     return location.pathname.startsWith(path)
   }
 

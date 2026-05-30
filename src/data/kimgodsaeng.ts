@@ -1,4 +1,5 @@
 import type { PolicyDetail } from '../pages/Policy/policyData'
+import type { AiBenefit } from '../types/aiBenefit'
 
 export const KIMGODSAENG_NAME = '김갓생'
 
@@ -202,3 +203,62 @@ export const kimgodsaengNotices = {
     { emoji: '🏦', text: '청약저축 소득공제를 받으려면 무주택확인서 제출 여부를 확인하세요.', date: '2일 전' },
   ],
 }
+
+export const kimgodsaengAiBenefits: AiBenefit[] = [
+  {
+    id: 'rent-tax-ai',
+    type: 'tax',
+    icon: '🏠',
+    iconBg: '#FEF3C7',
+    title: '월세액 세액공제',
+    subtitle: '월세 이체 내역 기반 분석',
+    statusLabel: '가능성 높음',
+    statusColor: '#16A34A',
+    amount: 240000,
+    amountLabel: '예상 절세 금액',
+    aiReason: '매월 고정 월세 이체 내역이 확인됐어요. 전입신고와 임대차계약서 주소 일치 여부를 확인해 주세요.',
+    conditions: ['무주택 세대주인가요?', '전입신고가 되어 있나요?', '임대차계약서 주소와 실거주지가 일치하나요?'],
+  },
+  {
+    id: 'youth-rent-ai',
+    type: 'policy',
+    icon: '🏢',
+    iconBg: '#DBEAFE',
+    title: '청년월세지원',
+    subtitle: '청년 주거비 부담 완화 사업',
+    statusLabel: '신청 가능',
+    statusColor: '#2563EB',
+    amount: 240000,
+    amountLabel: '최대 지원 금액',
+    aiReason: '26세 1인 가구 월세 거주 조건으로 청년월세지원 신청 대상입니다. 국토교통부 사업 기준으로 분석했어요.',
+    conditions: ['만 19~34세인가요?', '무주택 청년 1인 가구인가요?', '월세 60만원 이하인가요?'],
+  },
+  {
+    id: 'glasses-ai',
+    type: 'hidden',
+    icon: '👓',
+    iconBg: '#EDE9FE',
+    title: 'OO안경원 150,000원',
+    subtitle: '의료비 세액공제 후보',
+    statusLabel: '누락 가능성',
+    statusColor: '#D97706',
+    amount: 150000,
+    amountLabel: '공제 가능 금액',
+    aiReason: 'OO안경원에서 150,000원이 결제된 내역이 있어요. 시력교정용 안경/렌즈 구입비일 가능성이 있습니다.',
+    conditions: ['시력교정용 안경/렌즈인가요?', '영수증이 있나요?', '본인 또는 부양가족 지출인가요?'],
+  },
+  {
+    id: 'monthly-transfer-ai',
+    type: 'hidden',
+    icon: '🏦',
+    iconBg: '#D1FAE5',
+    title: '매월 700,000원 이체',
+    subtitle: '월세 공제 후보',
+    statusLabel: '추가 공제 가능',
+    statusColor: '#16A34A',
+    amount: 700000,
+    amountLabel: '공제 가능 금액',
+    aiReason: '매월 고정 이체 내역이 확인됐어요. 월세 공제 신청 시 추가 환급액이 늘 수 있어요.',
+    conditions: ['임대인 계좌로의 월세 이체인가요?', '임대차계약서가 있나요?', '전입신고가 완료되었나요?'],
+  },
+]
